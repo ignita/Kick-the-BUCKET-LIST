@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/build.css" />
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
   <meta charset="utf8">
 </head>
 
@@ -14,74 +15,52 @@
   <div id="page">
     <h1>KTBL<span id="counter"></span></h1>
     <div class="container">
-      <div class="card">
-        <div class="front-facing">
-          <header class="bucketlist-header">
-            <h2>List1</h2>
-          </header>
-          <div class="checkbox-list">
-            <ul>
-              <li>
-                <div class="checkbox">
-                  <input id="checkbox1" class="styled" type="checkbox">
-                  <label for="checkbox1">Default</label>
-                </div>
-              </li>
-            </ul>
+      <div class="flex-row row">
+        <div class="card border-dark mb-3" style="max-width: 20rem;">
+          <div class="card-header">Header&nbsp;<span class="badge badge-success"></span></div>
+          <div class="card-body">
+            <h4 class="card-title">Secondary card title</h4>
+            <button type="button" class="btn btn-sm btn-outline-success">추가</button>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk1_1" class="styled" type="checkbox"><label for="chk1_1">Cras justo odio</label></div></li>
+            <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk1_2" class="styled" type="checkbox"><label for="chk1_2">Dapibus ac facilisis in</label></div></li>
+          </ul>
+        </div>
+        <div class="card border-dark mb-3" style="max-width: 20rem;">
+          <div class="card-body text-secondary">
+            <h4 class="card-title">Secondary card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
-        <div class="back-facing">
-          <p>Copper is a chemical element with symbol Cu (from Latin: cuprum) and atomic number 29. It is a soft, malleable,
-            and ductile metal with very high thermal and electrical conductivity.</p>
-          <p><a class="btn" href="https://en.wikipedia.org/wiki/Copper" target="_blank">More info</a></p>
+        <div class="card bg-success mb-3" style="max-width: 20rem;">
+          <div class="card-header text-white">Header&nbsp;<span class="badge badge-success"></span></div>
+          <div class="card-body text-white">
+            <h4 class="card-title">Secondary card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_1" class="styled" type="checkbox" checked><label for="chk2_1">Cras justo odio</label></div></li>
+              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_2" class="styled" type="checkbox" checked><label for="chk2_2">Dapibus ac facilisis in</label></div></li>
+              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_3" class="styled" type="checkbox" checked><label for="chk2_3">Vestibulum at eros</label></div></li>
+            </ul>
+        </div>
+        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+          <div class="card-header">Header</div>
+          <div class="card-body">
+            <h4 class="card-title">Secondary card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <div class="front-facing">
-          <header class="bucketlist-header">
-            <h2>List1</h2>
-          </header>
-          <div class="checkbox-list">
-            <ul>
-              <li>
-                <div class="checkbox">
-                  <input id="checkbox1" class="styled" type="checkbox">
-                  <label for="checkbox1">Default</label>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-          <div class="front-facing">
-            <header class="bucketlist-header">
-              <h2>List1</h2>
-            </header>
-            <div class="checkbox-list">
-              <ul>
-                <li>
-                  <div class="checkbox">
-                    <input id="checkbox1" class="styled" type="checkbox">
-                    <label for="checkbox1">Default</label>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
     </div>
-
   </div>
-  <!-- <div id="newItemButton"><button href="#" id="showForm">new item</button></div>
-  <form id="newItemForm">
-    <input type="text" id="itemDescription" placeholder="Add description" />
-    <input type="submit" id="add" value="add" />
-  </form> -->
   </div>
   <script src="js/jquery-3.1.1.js"></script>
   <script src="js/bucket.js"></script>
   <script src="https://use.fontawesome.com/38585af7a3.js"></script>
+
+
 
 </body>
 
