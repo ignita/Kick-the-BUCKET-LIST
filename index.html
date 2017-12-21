@@ -20,11 +20,15 @@
           <div class="card-header">Header&nbsp;<span class="badge badge-success"></span></div>
           <div class="card-body">
             <h4 class="card-title">Secondary card title</h4>
-            <button type="button" class="btn btn-sm btn-outline-success">추가</button>
+            <button type="button" class="btn btn-sm btn-outline-success btn-add" data-toggle="modal" data-target="#exampleModal">추가</button>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk1_1" class="styled" type="checkbox"><label for="chk1_1">Cras justo odio</label></div></li>
-            <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk1_2" class="styled" type="checkbox"><label for="chk1_2">Dapibus ac facilisis in</label></div></li>
+            <li class="list-group-item">
+              <div class="checkbox checkbox-success"><input id="chk1_1" class="styled" type="checkbox"><label for="chk1_1">Cras justo odio</label></div>
+            </li>
+            <li class="list-group-item">
+              <div class="checkbox checkbox-success"><input id="chk1_2" class="styled" type="checkbox"><label for="chk1_2">Dapibus ac facilisis in</label></div>
+            </li>
           </ul>
         </div>
         <div class="card border-dark mb-3" style="max-width: 20rem;">
@@ -40,10 +44,16 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
           <ul class="list-group list-group-flush">
-              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_1" class="styled" type="checkbox" checked><label for="chk2_1">Cras justo odio</label></div></li>
-              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_2" class="styled" type="checkbox" checked><label for="chk2_2">Dapibus ac facilisis in</label></div></li>
-              <li class="list-group-item"><div class="checkbox checkbox-success"><input id="chk2_3" class="styled" type="checkbox" checked><label for="chk2_3">Vestibulum at eros</label></div></li>
-            </ul>
+            <li class="list-group-item">
+              <div class="checkbox checkbox-success"><input id="chk2_1" class="styled" type="checkbox" checked><label for="chk2_1">Cras justo odio</label></div>
+            </li>
+            <li class="list-group-item">
+              <div class="checkbox checkbox-success"><input id="chk2_2" class="styled" type="checkbox" checked><label for="chk2_2">Dapibus ac facilisis in</label></div>
+            </li>
+            <li class="list-group-item">
+              <div class="checkbox checkbox-success"><input id="chk2_3" class="styled" type="checkbox" checked><label for="chk2_3">Vestibulum at eros</label></div>
+            </li>
+          </ul>
         </div>
         <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
           <div class="card-header">Header</div>
@@ -54,12 +64,37 @@
         </div>
       </div>
     </div>
+    <!-- Modal
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">추가하기</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <input type="text" class="form-control" aria-label="Text input with checkbox">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+            <button type="submit" class="btn btn-primary">저장</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
   </div>
   <script src="js/jquery-3.1.1.js"></script>
   <script src="js/bucket.js"></script>
   <script src="https://use.fontawesome.com/38585af7a3.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
 
 
 </body>
