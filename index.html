@@ -12,8 +12,40 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <a class="navbar-brand" href="#">KTBL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+          </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+            Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">AAction</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something different</a>
+            </div>
+          </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
   <div id="page">
-    <h1>KTBL<span id="counter"></span></h1>
     <div class="container">
       <div class="flex-row row">
         <div class="card border-dark mb-3" style="max-width: 20rem;">
@@ -22,14 +54,15 @@
             <h4 class="card-title">Secondary card title</h4>
             <button type="button" class="btn btn-sm btn-outline-success btn-add" data-toggle="modal" data-target="#exampleModal">추가</button>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
+          <div>
+            <div class="col-md-6">
               <div class="checkbox checkbox-success"><input id="chk1_1" class="styled" type="checkbox"><label for="chk1_1">Cras justo odio</label></div>
-            </li>
-            <li class="list-group-item">
+            </div>
+            <div class="col-md-6">
               <div class="checkbox checkbox-success"><input id="chk1_2" class="styled" type="checkbox"><label for="chk1_2">Dapibus ac facilisis in</label></div>
-            </li>
-          </ul>
+            </div>
+          </div>
+
         </div>
         <div class="card border-dark mb-3" style="max-width: 20rem;">
           <div class="card-body text-secondary">
