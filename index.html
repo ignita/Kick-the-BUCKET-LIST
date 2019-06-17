@@ -4,18 +4,19 @@
 <head>
   <title>KTBL</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/build.css" />
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <meta charset="utf8">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <a class="navbar-brand" href="#">KTBL</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -27,17 +28,17 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
           </a>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">AAction</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something different</a>
-            </div>
-          </li>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">AAction</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something different</a>
+          </div>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -47,57 +48,46 @@
   </nav>
   <div id="page">
     <div class="container">
-      <div class="flex-row row">
-        <div class="card border-dark mb-3" style="max-width: 20rem;">
-          <div class="card-header">Header&nbsp;<span class="badge badge-success"></span></div>
-          <div class="card-body">
-            <h4 class="card-title">Secondary card title</h4>
-            <button type="button" class="btn btn-sm btn-outline-success btn-add" data-toggle="modal" data-target="#exampleModal">추가</button>
-          </div>
-          <div>
-            <div class="col-md-6">
-              <div class="checkbox checkbox-success"><input id="chk1_1" class="styled" type="checkbox"><label for="chk1_1">Cras justo odio</label></div>
-            </div>
-            <div class="col-md-6">
-              <div class="checkbox checkbox-success"><input id="chk1_2" class="styled" type="checkbox"><label for="chk1_2">Dapibus ac facilisis in</label></div>
-            </div>
-          </div>
+      <div class="card-deck">
 
-        </div>
-        <div class="card border-dark mb-3" style="max-width: 20rem;">
-          <div class="card-body text-secondary">
-            <h4 class="card-title">Secondary card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-        <div class="card bg-success mb-3" style="max-width: 20rem;">
-          <div class="card-header text-white">Header&nbsp;<span class="badge badge-success"></span></div>
-          <div class="card-body text-white">
-            <h4 class="card-title">Secondary card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="checkbox checkbox-success"><input id="chk2_1" class="styled" type="checkbox" checked><label for="chk2_1">Cras justo odio</label></div>
-            </li>
-            <li class="list-group-item">
-              <div class="checkbox checkbox-success"><input id="chk2_2" class="styled" type="checkbox" checked><label for="chk2_2">Dapibus ac facilisis in</label></div>
-            </li>
-            <li class="list-group-item">
-              <div class="checkbox checkbox-success"><input id="chk2_3" class="styled" type="checkbox" checked><label for="chk2_3">Vestibulum at eros</label></div>
-            </li>
-          </ul>
-        </div>
-        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-          <div class="card-header">Header</div>
+        <div class="card mb-3" style="max-width: 20rem;">
+          <div class="card-header text-white bg-success">TO DO</div>
           <div class="card-body">
-            <h4 class="card-title">Secondary card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="items">
+              <div class="card">
+                <div class="card-body p-2">
+                  <div class="card-title">
+                    test
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div class="card mb-3">
+          <div class="card-header text-white bg-success">IN-PROGRESS</div>
+          <div class="card-body">
+
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-header text-white bg-success">REVIEW</div>
+          <div class="card-body"></div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-header text-white bg-success">COMPLETE</div>
+          <div class="card-body">
+
+          </div>
+        </div>
+
       </div>
     </div>
-    <!-- Modal
+  </div>
+  <!-- Modal
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -124,9 +114,11 @@
   <script src="js/jquery-3.1.1.js"></script>
   <script src="js/bucket.js"></script>
   <script src="https://use.fontawesome.com/38585af7a3.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
     crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+    integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
     crossorigin="anonymous"></script>
 
 
