@@ -2,9 +2,11 @@
   "name": "achievements",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "client:dev": "webpack serve --open",
+    "server:dev": "NODE_ENV=development nodemon ./src/server/bin/www"
   },
   "repository": {
     "type": "git",
@@ -21,14 +23,21 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
-    "core-js": "^3.26.1"
+    "core-js": "^3.26.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "babel-loader": "^9.1.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.20",
     "prettier": "^2.8.1",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-dev-middleware": "^6.0.1",
+    "webpack-hot-middleware": "^2.25.3"
   }
 }
