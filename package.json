@@ -5,8 +5,9 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
+    "dev": "NODE_ENV=development node ./src/server/bin/www",
     "client:dev": "webpack serve --open",
-    "server:dev": "NODE_ENV=development nodemon ./src/server/bin/www"
+    "server:dev": "nodemon ./src/server/bin/www"
   },
   "repository": {
     "type": "git",
