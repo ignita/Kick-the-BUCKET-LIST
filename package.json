@@ -28,7 +28,8 @@
     "core-js": "^3.26.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "babel-loader": "^9.1.0",

@@ -1,15 +1,24 @@
 const express = require('express');
 const logger = require('morgan');
-const webpack = require('webpack');
 
+const pool = require('./config/db.js');
+const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
 
+app.use((req, res, next) => {
+  req.pool = pool;
+  next();
+});
+
 app.use(logger('common'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+const apiRouter = require('./routes/api.js');
+app.use('/api', apiRouter);
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
