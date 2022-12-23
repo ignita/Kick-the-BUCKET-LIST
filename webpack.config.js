@@ -6,7 +6,7 @@ module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
   entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/client/App.js'],
+    main: ['./src/client/App.js'],
   },
   output: {
     path: path.resolve('./dist'),
