@@ -1,5 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
+const helmet = require('helmet');
 
 const pool = require('./config/db.js');
 const webpack = require('webpack');
@@ -8,6 +9,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
 
+app.use(helmet());
+
 app.use((req, res, next) => {
   req.pool = pool;
   next();
@@ -15,7 +18,7 @@ app.use((req, res, next) => {
 
 app.use(logger('common'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 const apiRouter = require('./routes/api.js');
 app.use('/api', apiRouter);
