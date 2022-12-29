@@ -2,9 +2,13 @@ body {
   background-image: linear-gradient(90deg, #ccc 5%, transparent 0), linear-gradient(#ccc 5%, transparent 0);
   background-size: 20px 20px;
   background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 
-  margin-top: 15rem;
+  padding-top: 20rem;
+  padding-left: 20rem;
+  padding-right: 30rem;
   /* animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards; */
@@ -21,6 +25,7 @@ body {
 header {
   position: fixed;
   top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   width: 100%;
@@ -84,8 +89,9 @@ header nav ul > li {
   flex-direction: column;
   position: fixed;
   top: 8.75rem;
-  width: 15.625rem;
+  left: 0;
   bottom: 0;
+  width: 15.625rem;
   border-right: 1px solid #606f7b;
   background-color: #fff;
   transform: translateX(-15.625rem);
@@ -211,6 +217,7 @@ header nav ul > li {
   justify-content: space-between;
   transition: 0.3s;
   top: 8.75rem;
+  left: 0;
   background-color: rgba(241, 245, 248, 1);
   width: 100%;
   font-size: 1.5rem;
@@ -272,12 +279,12 @@ header nav ul > li {
   }
 }
 
-.card-list {
-  margin: 15rem;
+h1.category-title {
+  font-size: 1.8rem;
 }
 
-.card-list h1 {
-  font-size: 1.8rem;
+h2.category-title {
+  font-size: 1.5rem;
 }
 
 :target::before {
@@ -285,4 +292,44 @@ header nav ul > li {
   display: block;
   height: 180px;
   margin-top: -180px;
+}
+
+.achievement-wrapper {
+  padding: 1rem;
+  border: 1px solid rgba(4, 13, 44, 0.8);
+  background-color: #fff;
+  box-shadow: 0.6rem 0.6rem 0 rgba(4, 13, 44, 0.14);
+}
+
+.achievement-wrapper dd {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.achievement-wrapper ul {
+  margin-top: 1rem;
+  margin-left: 1.2rem;
+}
+
+.achievement-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.achievements-list {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-auto-rows: 30px;
+}
+
+.achievements-list ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.achievements-list ul > li {
+  display: flex;
+  justify-content: space-between;
 }

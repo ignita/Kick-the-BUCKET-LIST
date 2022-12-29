@@ -21,14 +21,12 @@ function App() {
   });
 
   const activeAnchor = () => {
-    const section = [...document.querySelectorAll('.card-list')];
+    const section = [...document.querySelectorAll('.category-title')];
     const sections = {};
 
     section.forEach(item => {
       sections[item.id] = item.offsetTop;
     });
-
-    console.log({ scroll: window.scrollY, trip: sections['trip'] });
 
     for (const [key, val] of Object.entries(sections)) {
       if (val <= window.scrollY + 200) {
@@ -47,6 +45,23 @@ function App() {
 
   window.addEventListener('scroll', activeAnchor);
   window.addEventListener('resize', activeAnchor);
+
+  function resizeGridItem(item) {
+    const grid = item.parentElement;
+    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+    const contentHeight = item.querySelector('dl').getBoundingClientRect().height + rowGap;
+    const rowSpan = Math.ceil(contentHeight / (rowHeight + rowGap));
+    item.style.gridRowEnd = 'span ' + rowSpan;
+  }
+
+  function resizeAllGridItems() {
+    const allItems = [...document.querySelectorAll('.achievement-wrapper')];
+    allItems.forEach(item => resizeGridItem(item));
+  }
+
+  resizeAllGridItems();
+  window.addEventListener('resize', resizeAllGridItems);
 }
 
 App();
