@@ -1,3 +1,14 @@
+:root {
+  --shadow-color-1: #b30000;
+  --shadow-color-2: #ff8000;
+  --shadow-color-3: #ffffaa;
+  --shadow-color-4: #6cd900;
+  --shadow-color-5: #008000;
+  --shadow-color-6: #000000;
+  --shadow-color-7: #404080;
+  --shadow-color-8: #888888;
+}
+
 body {
   background-image: linear-gradient(90deg, #ccc 5%, transparent 0), linear-gradient(#ccc 5%, transparent 0);
   background-size: 20px 20px;
@@ -5,23 +16,16 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-
+  margin: 0 auto;
   padding-top: 20rem;
-  padding-left: 20rem;
-  padding-right: 30rem;
-  /* animation: fadeInAnimation ease 3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards; */
+  max-width: 60%;
 }
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
+/* @media (min-width: 992px) {
+  body {
   }
-  100% {
-    opacity: 1;
-  }
-}
+} */
+
 header {
   position: fixed;
   top: 0;
@@ -34,6 +38,7 @@ header {
   flex-wrap: wrap;
   border-bottom: 1px solid #606f7b;
   background-color: #fff;
+  z-index: 2;
 }
 
 header .title {
@@ -223,6 +228,23 @@ header nav ul > li {
   font-size: 1.5rem;
 }
 
+.filter-list-item:hover {
+  transition: 0.3s ease;
+  border-bottom: 2px solid #000;
+}
+
+.filter-list-item:hover > * {
+  color: #000;
+}
+
+.filter-list-item:not(:first-child) {
+  color: #ccc;
+}
+
+.filter-list-item.active {
+  color: rgba(4, 13, 44, 0.8);
+}
+
 .filter-list-item:first-child {
   display: flex;
 }
@@ -237,6 +259,8 @@ header nav ul > li {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  min-width: 2rem;
 }
 
 .filter-list-item-text {
@@ -263,6 +287,7 @@ header nav ul > li {
 
   .filter-list-item {
     padding: 1rem 2rem;
+    min-width: 12rem;
   }
 
   .filter-list-item:first-child {
@@ -281,6 +306,7 @@ header nav ul > li {
 
 h1.category-title {
   font-size: 1.8rem;
+  font-style: italic;
 }
 
 h2.category-title {
@@ -294,11 +320,14 @@ h2.category-title {
   margin-top: -180px;
 }
 
-.achievement-wrapper {
-  padding: 1rem;
-  border: 1px solid rgba(4, 13, 44, 0.8);
-  background-color: #fff;
-  box-shadow: 0.6rem 0.6rem 0 rgba(4, 13, 44, 0.14);
+.achievements-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.achievements-content {
+  width: 100%;
 }
 
 .achievement-wrapper dd {
@@ -319,8 +348,10 @@ h2.category-title {
 .achievements-list {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-rows: 30px;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }
 
 .achievements-list ul {
@@ -332,4 +363,175 @@ h2.category-title {
 .achievements-list ul > li {
   display: flex;
   justify-content: space-between;
+}
+
+.front,
+.back {
+  padding: 1rem;
+  border: 1px solid rgba(4, 13, 44, 0.8);
+  background-color: #fff;
+  backface-visibility: hidden;
+  transition: transform 0.75s, box-shadow 0.5s, background-color 0.5s;
+}
+
+.back {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transform: rotateX(-180deg);
+}
+
+.achievement-wrapper {
+  position: relative;
+}
+
+.achievement-wrapper:nth-child(8n + 1):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-1);
+}
+
+.achievement-wrapper:nth-child(8n + 2):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-2);
+}
+
+.achievement-wrapper:nth-child(8n + 3):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-3);
+}
+
+.achievement-wrapper:nth-child(8n + 4):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-4);
+}
+
+.achievement-wrapper:nth-child(8n + 5):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-5);
+}
+.achievement-wrapper:nth-child(8n + 6):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-6);
+}
+.achievement-wrapper:nth-child(8n + 7):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-7);
+}
+.achievement-wrapper:nth-child(8n + 8):hover > * {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-8);
+}
+
+.achievement-wrapper:hover .front:not(:only-child) {
+  transform: rotateX(-180deg);
+}
+.achievement-wrapper:hover .back {
+  transform: rotateX(0);
+}
+
+.achievements-dashboard {
+  width: 100%;
+  min-width: 25rem;
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid rgba(4, 13, 44, 0.8);
+  background-color: #fff;
+  transition: box-shadow 0.5s;
+}
+
+.achievements-dashboard:hover {
+  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-6);
+}
+
+.achievements-dashboard-header {
+  margin-bottom: 1.2rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.total-status {
+  display: flex;
+  margin-bottom: 1.2rem;
+}
+
+.total-status .item-status {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+.total-status .item-status .status-type {
+  margin-bottom: 0.25rem;
+}
+.total-status .item-status .status-number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.year-status {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.year-status-item {
+  display: flex;
+  padding: 0.75rem;
+  justify-content: space-around;
+  gap: 1rem;
+  border: 1px solid rgba(4, 13, 44, 0.8);
+  background-color: #fff;
+  flex-basis: 13rem;
+  flex: 1 1 40%;
+}
+
+@media (min-width: 1024px) {
+  .year-status-item {
+    flex: 0 0 20%;
+  }
+}
+
+.year-status-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.year-status-item-type {
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  padding: 0.125em 0.4em;
+  background-color: rgba(241, 245, 248, 1);
+  word-break: keep-all;
+}
+
+.year-status-item-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.year-status-item-trending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.year-status-item-trending-icon {
+  font-size: 1.5rem;
+}
+
+.year-status-item-trending-number {
+  font-size: 1.5rem;
+}
+
+.trending-up .year-status-item-trending-icon,
+.trending-up .year-status-item-trending-number {
+  color: var(--shadow-color-4);
+  font-weight: 700;
+}
+
+.trending-down .year-status-item-trending-icon,
+.trending-down .year-status-item-trending-number {
+  color: var(--shadow-color-1);
+  font-weight: 700;
 }
