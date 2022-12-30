@@ -30,7 +30,7 @@ function App() {
 
     for (const [key, val] of Object.entries(sections)) {
       if (val <= window.scrollY + 200) {
-        const active = document.querySelector('.active');
+        const active = document.querySelector('a.active');
         if (active) {
           document.querySelector('.active').classList.remove('active');
         }
