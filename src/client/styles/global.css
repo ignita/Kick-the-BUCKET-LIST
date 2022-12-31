@@ -263,10 +263,6 @@ header nav ul > li {
   font-size: 2rem;
 }
 
-.sub-header-layout-toggle-btn {
-  display: none;
-}
-
 @media (min-width: 992px) {
   .side-bar.collapse + .sub-header {
     width: calc(100% - 6.4rem);
@@ -294,11 +290,6 @@ header nav ul > li {
 
   .filter-list-item-text {
     display: block;
-  }
-
-  .sub-header-layout-toggle-btn {
-    padding: 2rem 4rem;
-    display: flex;
   }
 }
 
