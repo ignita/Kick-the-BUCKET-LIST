@@ -83,6 +83,21 @@ function App() {
     }, options);
     observer.observe(item);
   });
+
+  const sideBarOpenBtn = document.querySelector('.filter-list-item-side-toggle-btn');
+  sideBarOpenBtn.addEventListener('click', e => {
+    sideBar.classList.add('open');
+  });
+
+  const sideBarCloseBtn = document.querySelector('.side-bar-close-btn');
+  sideBarCloseBtn.addEventListener('click', e => {
+    sideBar.classList.remove('open');
+  });
+
+  const sideBarDark = document.querySelector('.side-bar-dark');
+  sideBarDark.addEventListener('click', e => {
+    sideBar.classList.remove('open');
+  });
 }
 App();
 

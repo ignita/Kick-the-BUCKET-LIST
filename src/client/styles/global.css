@@ -33,7 +33,7 @@ header {
   grid-area: header;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -99,6 +99,7 @@ header nav ul > li {
   position: fixed;
   top: var(--header-height);
   bottom: 0;
+  z-index: 3;
 
   display: flex;
   flex-direction: column;
@@ -107,21 +108,68 @@ header nav ul > li {
   background-color: #fff;
 
   transform: translateX(calc(var(--expand-side-bar-with) * -1));
-  transition: all 0.5s ease;
+  transition: all 0.7s ease;
+}
+
+.side-bar .side-bar-close-btn {
+  display: none;
+}
+
+.side-bar.open {
+  transform: translateX(0);
+}
+
+.open + .side-bar-dark {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.side-bar-dark {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.7s cubic-bezier(0.8, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.side-bar.open .side-bar-close-btn {
+  display: block;
+}
+
+.side-bar.open .side-bar-header-btn {
+  display: none;
 }
 
 .side-bar-header {
-  position: relative;
-  margin: 2rem 0;
+  display: grid;
+  grid-template-areas: 'close . collapse';
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #000;
+  margin-bottom: 2rem;
+}
+
+.side-bar-close-btn {
+  font-size: 2rem;
+  border: 1px solid #000;
+  line-height: 1.2rem;
+  grid-area: close;
+  transition: all 0.5s ease;
 }
 
 .side-bar-header-btn {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
   font-size: 1.8rem;
   background-color: transparent;
-  transform: translateY(-50%);
+  display: block;
+  transition: all 0.1s;
+  border: 1px solid #000;
+  line-height: 1.2rem;
+  grid-area: collapse;
 }
 
 .side-bar .main-category {
@@ -191,6 +239,11 @@ header nav ul > li {
 
 .side-bar.collapse .side-bar-header-btn {
   right: 2.25rem;
+  transform: translateX(-1.2rem);
+}
+
+.side-bar.collapse .side-bar-close-btn {
+  transform: translateX(1rem);
 }
 
 .side-bar.collapse .main-category > li {
@@ -266,18 +319,18 @@ header nav ul > li {
 }
 
 @media (min-width: 992px) {
-  .side-bar.collapse + .sub-header {
+  .side-bar.collapse ~ .sub-header {
     width: calc(100% - 6.4rem);
   }
 
   .sub-header {
     width: calc(100% - var(--expand-side-bar-with));
   }
-  .side-bar.collapse + .sub-header {
+  .side-bar.collapse ~ .sub-header {
     left: 6.4rem;
   }
 
-  .side-bar + .sub-header {
+  .side-bar ~ .sub-header {
     left: var(--expand-side-bar-with);
   }
 
