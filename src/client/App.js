@@ -98,6 +98,13 @@ function App() {
   sideBarDark.addEventListener('click', e => {
     sideBar.classList.remove('open');
   });
+
+  const mediaSize992 = window.matchMedia('(min-width: 992px)');
+  mediaSize992.addEventListener('change', e => {
+    if (e.matches) {
+      sideBar.classList.remove('open');
+    }
+  });
 }
 App();
 
