@@ -62,8 +62,28 @@ function App() {
   window.addEventListener('resize', resizeAllGridItems);
 
   resizeAllGridItems();
-}
 
+  const achievements = [...document.querySelectorAll('.achievement-wrapper')];
+  achievements.forEach(item => {
+    let options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3,
+    };
+
+    let observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        const title = entry.target.querySelector('.achievement-title').innerHTML;
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('tilt');
+        } else {
+          entry.target.classList.add('tilt');
+        }
+      });
+    }, options);
+    observer.observe(item);
+  });
+}
 App();
 
 if (module.hot) {

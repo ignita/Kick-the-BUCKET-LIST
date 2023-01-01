@@ -33,6 +33,7 @@ header {
   grid-area: header;
   position: fixed;
   top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -214,6 +215,7 @@ header nav ul > li {
   transition: 0.5s;
   top: var(--header-height);
   left: 0;
+  z-index: 1;
   background-color: rgba(241, 245, 248, 1);
   width: 100%;
   font-size: 1.5rem;
@@ -323,6 +325,17 @@ h2.category-title {
   width: 100%;
 }
 
+.achievement-wrapper.tilt {
+  transform: perspective(12rem) rotateX(30deg);
+  opacity: 0;
+}
+
+.achievement-wrapper {
+  transition-duration: 0.7s, 0.7s;
+  transition-property: transform, opacity;
+  transform: rotateX(0);
+  opacity: 1;
+}
 .achievement-wrapper dd {
   margin-top: 0.5rem;
   margin-left: 1rem;
@@ -331,20 +344,25 @@ h2.category-title {
 .achievement-wrapper ul {
   margin-top: 1rem;
   margin-left: 1.2rem;
+  font-size: 1.25rem;
 }
 
 .achievement-title {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 2rem;
+}
+
+.achievement-description {
+  font-size: 1.25rem;
 }
 
 .achievements-list {
   display: grid;
-  grid-gap: 1.25rem;
-  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 3rem 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   grid-auto-rows: 30px;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
 }
 
 .achievements-list ul {
@@ -360,7 +378,7 @@ h2.category-title {
 
 .front,
 .back {
-  padding: 1rem;
+  padding: 2rem 1rem;
   border: 1px solid rgba(4, 13, 44, 0.8);
   background-color: #fff;
   backface-visibility: hidden;
@@ -431,9 +449,18 @@ h2.category-title {
   box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-6);
 }
 
-/* .achievements-dashboard:has(.dashboard-contents:hover) {
-  box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-6);
-} */
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+.achievements-dashboard:hover .year-status-item-type {
+  animation: rotate 1s;
+}
 
 .achievements-dashboard-header {
   margin-bottom: 1.2rem;
@@ -442,6 +469,7 @@ h2.category-title {
 .dashboard-title {
   font-size: 2rem;
   font-style: italic;
+  font-weight: 700;
 }
 
 .total-status {
