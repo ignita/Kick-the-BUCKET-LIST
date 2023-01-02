@@ -8,6 +8,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
+    <input type="checkbox" id="theme-switch" />
     <div id="app">
       <header>
         <div class="title">
@@ -20,9 +21,9 @@
             <li><a href="#">About</a></li>
           </ul>
         </nav>
-        <button class="theme-switcher">
-          <i class="bx bxs-moon"></i>
-        </button>
+        <label for="theme-switch" class="theme-switcher">
+          <i class="bx bxs-moon theme-switcher-icon"></i>
+        </label>
       </header>
 
       <aside class="side-bar">
@@ -186,7 +187,7 @@
           </li>
         </ul>
       </section>
-      <article class="achievements-wrapper column">
+      <article class="achievements-wrapper">
         <div class="achievements-dashboard">
           <div class="achievements-dashboard-header">
             <span class="dashboard-title">통계</span>

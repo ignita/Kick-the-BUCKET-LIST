@@ -1,3 +1,11 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', sans-serif;
+}
+
 :root {
   --shadow-color-1: #b30000;
   --shadow-color-2: #ff8000;
@@ -13,10 +21,53 @@
   --color-gray-1: #ccc;
   --color-gray-2: #f1f5f8;
   --color-gray-3: #606f7b;
+  --color-gray-4: #3d4852;
 
   --header-height: 12rem;
   --sub-header-height: 4.375rem;
   --expand-side-bar-with: 15.625rem;
+
+  --light-bg: #fff;
+  --light-bg-grid: var(--color-gray-1);
+  --light-text: var(--color-black-1);
+  --light-text-active: var(--color-gray-3);
+  --light-text-inactive: var(--color-gray-1);
+  --light-bg-gray: var(--color-gray-2);
+  --light-border: var(--color-black-1);
+
+  --dark-bg: #1e1e1e;
+  --dark-bg-grid: var(--color-gray-4);
+  --dark-text: #f8fafc;
+  --dark-text-active: var(--color-white-1);
+  --dark-text-inactive: #71717a;
+  --dark-bg-gray: var(--color-gray-4);
+  --dark-border: var(--color-gray-4);
+
+  --text-color: var(--light-text);
+  --text-active-color: var(--light-text-active);
+  --text-inactive-color: var(--light-text-inactive);
+  --bg-color: var(--light-bg);
+  --bg-grid-color: var(--light-bg-grid);
+  --bg-gray-color: var(--light-bg-gray);
+  --border-color: var(--light-border);
+}
+
+#theme-switch:checked ~ #app {
+  --text-color: var(--dark-text);
+  --text-active-color: var(--dark-text-active);
+  --text-inactive-color: var(--dark-text-inactive);
+  --bg-color: var(--dark-bg);
+  --bg-grid-color: var(--dark-bg-grid);
+  --bg-gray-color: var(--dark-bg-gray);
+  --border-color: var(--dark-border);
+}
+
+#theme-switch {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 @media (min-width: 640px) {
@@ -26,8 +77,10 @@
 }
 
 #app {
-  background-image: linear-gradient(90deg, var(--color-gray-1) 5%, transparent 0),
-    linear-gradient(var(--color-gray-1) 5%, transparent 0);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  background-image: linear-gradient(90deg, var(--bg-grid-color) 5%, transparent 0),
+    linear-gradient(var(--bg-grid-color) 5%, transparent 0);
   background-size: 20px 20px;
   background-repeat: repeat;
   overflow: auto;
@@ -49,7 +102,7 @@ header {
   width: 100%;
   padding: 0.5rem 4rem 0.5rem 1rem;
   border-bottom: 1px solid var(--color-gray-3);
-  background-color: var(--color-white-1);
+  background-color: var(--bg-color);
   min-height: var(--header-height);
 }
 
@@ -74,8 +127,9 @@ header .theme-switcher {
   padding: 0.75rem;
   margin-right: 1rem;
   margin-top: 1rem;
-  background-color: var(--color-gray-2);
+  background-color: var(--bg-gray-color);
   border-radius: 9999px;
+  cursor: pointer;
 }
 
 header .theme-switcher svg {
@@ -113,7 +167,7 @@ header nav ul > li {
   flex-direction: column;
   width: var(--expand-side-bar-with);
   border-right: 1px solid var(--color-gray-3);
-  background-color: var(--color-white-1);
+  background-color: var(--bg-color);
 
   transform: translateX(calc(var(--expand-side-bar-with) * -1));
   transition: all 0.7s ease;
@@ -149,6 +203,7 @@ header nav ul > li {
   transition: all 0.7s ease;
   opacity: 0;
   pointer-events: none;
+  color: var(--text-color);
 }
 
 .side-bar.open .side-bar-close-btn {
@@ -176,6 +231,7 @@ header nav ul > li {
   grid-area: collapse;
   opacity: 0;
   pointer-events: none;
+  color: var(--text-color);
 }
 
 .side-bar .main-category {
@@ -205,18 +261,18 @@ header nav ul > li {
   position: relative;
   padding: 0.5rem 2rem;
   margin-bottom: 1.1rem;
-  color: var(--color-gray-1);
+  color: var(--text-inactive-color);
   transition: 0.5s ease;
   height: 100%;
 }
 
 .sub-category-item > a.active {
-  color: var(--color-gray-3);
+  color: var(--text-active-color);
 }
 
 .sub-category-item:hover a {
-  color: var(--color-gray-3);
-  border-left: 2px solid var(--color-gray-3);
+  color: var(--text-active-color);
+  border-left: 2px solid var(--text-active-color);
 }
 
 .sub-category-item a span {
@@ -279,7 +335,7 @@ header nav ul > li {
   top: var(--header-height);
   left: 0;
   z-index: 1;
-  background-color: var(--color-gray-2);
+  background-color: var(--bg-gray-color);
   width: 100%;
   height: var(--sub-header-height);
   font-size: 1.5rem;
@@ -318,24 +374,30 @@ header nav ul > li {
 }
 
 .filter-list-item.active {
-  color: var(--color-gray-3);
+  color: var(--text-active-color);
+  font-weight: 700;
 }
 
 .filter-list-item:first-child {
   display: flex;
 }
 
+.filter-list-item-side-toggle-btn {
+  color: var(--text-color);
+}
+
 .filter-list-item:hover {
   transition: 0.3s ease;
-  border-bottom: 2px solid var(--color-gray-3);
+  border-bottom: 2px solid var(--text-active-color);
+  font-weight: 700;
 }
 
 .filter-list-item:hover > * {
-  color: var(--color-gray-3);
+  color: var(--text-active-color);
 }
 
-.filter-list-item:not(.active) {
-  color: var(--color-gray-1);
+.filter-list-item {
+  color: var(--text-inactive-color);
 }
 
 .filter-list-item-text {
@@ -447,8 +509,8 @@ h2.category-title {
 .front,
 .back {
   padding: 2rem 1rem;
-  border: 1px solid rgba(4, 13, 44, 0.8);
-  background-color: var(--color-white-1);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   backface-visibility: hidden;
   transition: transform 0.75s, box-shadow 0.5s, background-color 0.5s;
   grid-area: card;
@@ -463,6 +525,10 @@ h2.category-title {
 .achievement-wrapper {
   display: grid;
   grid-template-areas: 'card';
+}
+
+.achievement-wrapper:hover {
+  transform: scale(1.03);
 }
 
 .achievement-wrapper:nth-child(8n + 1):hover > * {
@@ -508,12 +574,13 @@ h2.category-title {
   flex-direction: column;
   margin-bottom: 2rem;
   padding: 1rem;
-  border: 1px solid rgba(4, 13, 44, 0.8);
-  background-color: var(--color-white-1);
-  transition: box-shadow 0.5s;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  transition: transform 0.7s, box-shadow 0.7s;
 }
 
 .achievements-dashboard:hover {
+  transform: scale(1.03);
   box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-6);
 }
 
@@ -571,8 +638,8 @@ h2.category-title {
   padding: 0.75rem;
   justify-content: space-evenly;
   gap: 1rem;
-  border: 1px solid rgba(4, 13, 44, 0.8);
-  background-color: var(--color-white-1);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   flex-basis: 13rem;
   flex: 1 1 40%;
 }
@@ -594,7 +661,7 @@ h2.category-title {
 .year-status-item-type {
   border-radius: 0.25rem;
   padding: 0.125em 0.4em;
-  background-color: var(--color-gray-2);
+  background-color: var(--bg-gray-color);
   word-break: keep-all;
 }
 

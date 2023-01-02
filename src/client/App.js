@@ -105,6 +105,23 @@ function App() {
       sideBar.classList.remove('open');
     }
   });
+
+  const themeSwitch = document.querySelector('#theme-switch');
+  const themeSwitcherIcon = document.querySelector('.theme-switcher-icon');
+  themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+  themeSwitcherIcon.classList = themeSwitch.checked
+    ? 'bx bxs-sun theme-switcher-icon'
+    : 'bx bxs-moon theme-switcher-icon';
+
+  themeSwitch.addEventListener('change', e => {
+    if (e.currentTarget.checked === true) {
+      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
+      localStorage.setItem('switchedTheme', 'true');
+    } else {
+      themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
+      localStorage.removeItem('switchedTheme');
+    }
+  });
 }
 App();
 

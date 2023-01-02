@@ -1,10 +1,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-:root {
-}
-
 * {
-  font-family: 'Noto Sans KR', sans-serif;
+  /* font-family: 'Noto Sans KR', sans-serif; */
   box-sizing: border-box;
 }
 
