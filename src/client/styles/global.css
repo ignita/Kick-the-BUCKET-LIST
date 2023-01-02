@@ -94,7 +94,7 @@ header {
   grid-area: header;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 5;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -161,7 +161,7 @@ header nav ul > li {
   position: fixed;
   top: var(--header-height);
   bottom: 0;
-  z-index: 3;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
@@ -183,7 +183,7 @@ header nav ul > li {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 4;
   opacity: 0;
   cursor: pointer;
   transition: opacity 0.7s cubic-bezier(0.8, 0, 0.2, 1);
@@ -334,7 +334,7 @@ header nav ul > li {
   transition: all 0.7s ease;
   top: var(--header-height);
   left: 0;
-  z-index: 1;
+  z-index: 3;
   background-color: var(--bg-gray-color);
   width: 100%;
   height: var(--sub-header-height);
@@ -519,7 +519,7 @@ h2.category-title {
 
 .back {
   width: 100%;
-  transform: rotateX(-180deg);
+  transform: rotateX(180deg);
 }
 
 .achievement-wrapper {
@@ -529,6 +529,23 @@ h2.category-title {
 
 .achievement-wrapper:hover {
   transform: scale(1.03);
+  z-index: 2;
+}
+
+@keyframes unhover {
+  0% {
+    z-index: 1;
+  }
+  99% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 0;
+  }
+}
+
+.achievement-wrapper:not(:hover) {
+  animation: unhover 0.5s;
 }
 
 .achievement-wrapper:nth-child(8n + 1):hover > * {
