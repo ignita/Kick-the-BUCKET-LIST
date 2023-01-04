@@ -4,6 +4,7 @@ import './styles/reset.css';
 import './styles/style.css';
 import './styles/global.css';
 import 'boxicons';
+import './assets/test_image.svg';
 
 function App() {
   const sideBar = document.querySelector('.side-bar');
@@ -28,6 +29,7 @@ function App() {
       sections[item.id] = item.offsetTop;
     });
 
+    console.log(sections);
     for (const [key, val] of Object.entries(sections)) {
       if (val <= window.scrollY + 200) {
         const active = document.querySelector('a.active');
@@ -47,7 +49,7 @@ function App() {
     const grid = item.parentElement;
     const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
     const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-    const contentHeight = item.querySelector('dl').getBoundingClientRect().height + rowGap;
+    const contentHeight = item.querySelector('.front').getBoundingClientRect().height + rowGap;
     const rowSpan = Math.ceil(contentHeight / (rowHeight + rowGap));
     item.style.gridRowEnd = 'span ' + rowSpan;
   };
@@ -73,7 +75,6 @@ function App() {
 
     let observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        const title = entry.target.querySelector('.achievement-title').innerHTML;
         if (entry.isIntersecting) {
           entry.target.classList.remove('tilt');
         } else {
@@ -108,18 +109,40 @@ function App() {
 
   const themeSwitch = document.querySelector('#theme-switch');
   const themeSwitcherIcon = document.querySelector('.theme-switcher-icon');
-  themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+  const mediaColorDark = window.matchMedia('(prefers-color-scheme: dark)');
+  mediaColorDark.addEventListener('change', e => {
+    if (e.matches) {
+      themeSwitch.checked = true;
+      metaThemeColor.content = '#3d4852';
+      localStorage.setItem('switchedTheme', 'dark');
+      themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
+    } else {
+      themeSwitch.checked = false;
+      metaThemeColor.content = '#4181c5';
+      localStorage.setItem('switchedTheme', 'light');
+      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
+    }
+  });
+
+  const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const currentTheme = localStorage.getItem('switchedTheme') || prefersColorScheme;
+  themeSwitch.checked = currentTheme === 'dark' ? true : false;
   themeSwitcherIcon.classList = themeSwitch.checked
-    ? 'bx bxs-sun theme-switcher-icon'
-    : 'bx bxs-moon theme-switcher-icon';
+    ? 'bx bxs-moon theme-switcher-icon'
+    : 'bx bxs-sun theme-switcher-icon';
+
+  metaThemeColor.content = themeSwitch.checked ? '#3d4852' : '#4181c5';
 
   themeSwitch.addEventListener('change', e => {
-    if (e.currentTarget.checked === true) {
-      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
-      localStorage.setItem('switchedTheme', 'true');
-    } else {
+    if (e.currentTarget.checked) {
+      metaThemeColor.content = '#3d4852';
+      localStorage.setItem('switchedTheme', 'dark');
       themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
-      localStorage.removeItem('switchedTheme');
+    } else {
+      metaThemeColor.content = '#4181c5';
+      localStorage.setItem('switchedTheme', 'light');
+      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
     }
   });
 }
