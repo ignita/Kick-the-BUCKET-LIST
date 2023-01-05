@@ -1,4 +1,5 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
+@import 'https://unpkg.com/open-props/easings.min.css';
 
 body {
   font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
@@ -21,6 +22,9 @@ body {
   --color-gray-1: #ccc;
   --color-gray-2: #606f7b;
   --color-gray-3: #3d4852;
+
+  --icon-fill: var(--color-white-1);
+  --icon-fill-hover: #ffeb3b;
 
   --header-height: 12rem;
   --sub-header-height: 4.375rem;
@@ -60,7 +64,7 @@ body {
   --decrease-color: var(--light-decrease-color);
 }
 
-#theme-switch:checked ~ #app {
+[data-theme='dark'] {
   --text-color: var(--dark-text);
   --text-alt-color: var(--dark-text-alt);
   --text-active-color: var(--dark-text-active);
@@ -131,18 +135,119 @@ header .title a {
   font-style: italic;
 }
 
-header .theme-switcher {
+.theme-switcher {
   display: flex;
   position: absolute;
   font-size: 2rem;
   top: 1rem;
   right: 1rem;
+  color: var(--text-alt-color);
+  inline-size: 2rem;
+  block-size: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline-offset: 5px;
 }
 
-header .theme-switcher svg {
-  height: 2rem;
-  width: 2rem;
+@media (hover: none) {
+  .theme-switcher {
+    font-size: 3rem;
+    inline-size: 3rem;
+    block-size: 3rem;
+  }
+}
+
+.theme-switcher > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  stroke-linecap: round;
+}
+
+.sun-and-moon > .moon,
+.sun-and-moon > .sun,
+.sun-and-moon > .sun-beams {
+  transform-origin: center center;
+}
+
+.sun-and-moon > .moon,
+.sun-and-moon > .sun {
+  fill: var(--icon-fill);
+}
+
+.sun-and-moon:hover > .moon,
+.sun-and-moon:hover > .sun,
+.sun-and-moon:focus-visible > .moon,
+.sun-and-moon:focus-visible > .sun {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.sun-and-moon:hover > .sun-beams,
+.sun-and-moon:focus-visible > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme='dark'] .sun-and-moon > .sun {
+  transform: scale(1.75);
+}
+
+[data-theme='dark'] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme='dark'] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+  [data-theme='dark'] .sun-and-moon > .moon > circle {
+    transform: translateX(0);
+    cx: 17;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sum-and-moon > .sun {
+    transition: transform 0.5s var(--ease-elastic-3);
+  }
+
+  .sun-and-moon > .sun-beams {
+    transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+  }
+
+  .sun-and-moon > .moon > circle {
+    transition: transform 0.25s var(--ease-out-5);
+  }
+
+  @supports (cx: 1) {
+    .sun-and-moon > .moon > circle {
+      transition: cx 0.25s var(--ease-out-5);
+    }
+  }
+
+  [data-theme='dark'] .sun-and-moon > .sun {
+    transform: scale(1.75);
+    transition-timing-function: var(--ease-3);
+    transition-duration: 0.25s;
+  }
+
+  [data-theme='dark'] .sun-and-moon > .sun-beams {
+    transform: rotateZ(-25deg);
+    transition-duration: 0.15s;
+  }
+
+  [data-theme='dark'] .sun-and-moon > .moon > circle {
+    transition-delay: 0.25s;
+    transition-duration: 0.5s;
+  }
 }
 
 header nav {

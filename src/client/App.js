@@ -105,43 +105,38 @@ function App() {
     }
   });
 
-  const themeSwitch = document.querySelector('#theme-switch');
-  const themeSwitcherIcon = document.querySelector('.theme-switcher-icon');
-  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-  const mediaColorDark = window.matchMedia('(prefers-color-scheme: dark)');
-  mediaColorDark.addEventListener('change', e => {
-    if (e.matches) {
-      themeSwitch.checked = true;
-      metaThemeColor.content = '#3d4852';
-      localStorage.setItem('switchedTheme', 'dark');
-      themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
+  const storageKey = 'theme-preference';
+  const getColorPreference = () => {
+    if (localStorage.getItem(storageKey)) {
+      return localStorage.getItem(storageKey);
     } else {
-      themeSwitch.checked = false;
-      metaThemeColor.content = '#293c8b';
-      localStorage.setItem('switchedTheme', 'light');
-      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
+  };
+  const theme = { value: getColorPreference() };
+
+  const setPreference = () => {
+    localStorage.setItem(storageKey, theme.value);
+    reflectPreference();
+  };
+
+  const reflectPreference = () => {
+    document.firstElementChild.setAttribute('data-theme', theme.value);
+    document.querySelector('#theme-switcher')?.setAttribute('aria-label', theme.value);
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    metaThemeColor.content = theme.value === 'dark' ? '#3d4852' : '#293c8b';
+  };
+
+  reflectPreference();
+  document.querySelector('#theme-switcher').addEventListener('click', e => {
+    theme.value = theme.value === 'light' ? 'dark' : 'light';
+
+    setPreference();
   });
 
-  const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const currentTheme = localStorage.getItem('switchedTheme') || prefersColorScheme;
-  themeSwitch.checked = currentTheme === 'dark' ? true : false;
-  themeSwitcherIcon.classList = themeSwitch.checked
-    ? 'bx bxs-moon theme-switcher-icon'
-    : 'bx bxs-sun theme-switcher-icon';
-
-  metaThemeColor.content = themeSwitch.checked ? '#3d4852' : '#293c8b';
-
-  themeSwitch.addEventListener('change', e => {
-    if (e.currentTarget.checked) {
-      metaThemeColor.content = '#3d4852';
-      localStorage.setItem('switchedTheme', 'dark');
-      themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
-    } else {
-      metaThemeColor.content = '#293c8b';
-      localStorage.setItem('switchedTheme', 'light');
-      themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
-    }
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches: isDark }) => {
+    theme.value = isDark ? 'dark' : 'light';
+    setPreference();
   });
 
   const achievementsContent = document.querySelector('.achievements-content');
