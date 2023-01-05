@@ -21,28 +21,28 @@ function App() {
     }
   });
 
-  const activeAnchor = () => {
-    const section = [...document.querySelectorAll('.category-title')];
-    const sections = {};
-
-    section.forEach(item => {
-      sections[item.id] = item.offsetTop;
-    });
-
-    for (const [key, val] of Object.entries(sections)) {
-      if (val <= window.scrollY + 200) {
+  const changeNav = entries => {
+    entries.forEach(entry => {
+      const { isIntersecting, intersectionRatio, target } = entry;
+      if (isIntersecting && intersectionRatio >= 0.55) {
         const active = document.querySelector('a.active');
         if (active) {
-          document.querySelector('.active').classList.remove('active');
+          active.classList.remove('active');
         }
-
-        const anchor = document.querySelector('a[href*=' + key + ']');
+        const { id } = target.previousElementSibling;
+        const anchor = document.querySelector('a[href*=' + id + ']');
         if (anchor) {
           anchor.classList.add('active');
         }
       }
-    }
+    });
   };
+
+  const navObserver = new IntersectionObserver(changeNav, {
+    threshold: 0.8,
+  });
+  const sections = document.querySelectorAll('.achievements-list');
+  sections.forEach(section => navObserver.observe(section));
 
   const resizeGridItem = item => {
     const grid = item.parentElement;
@@ -58,8 +58,6 @@ function App() {
     allItems.forEach(item => resizeGridItem(item));
   };
 
-  window.addEventListener('scroll', activeAnchor);
-  window.addEventListener('resize', activeAnchor);
   window.addEventListener('resize', resizeAllGridItems);
 
   resizeAllGridItems();
