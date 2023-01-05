@@ -24,15 +24,15 @@ function App() {
   const changeNav = entries => {
     entries.forEach(entry => {
       const { isIntersecting, intersectionRatio, target } = entry;
+      const { id } = target;
+      const anchor = document.querySelector('a[href*=' + id + ']');
       if (isIntersecting && intersectionRatio >= 0.55) {
-        const active = document.querySelector('a.active');
-        if (active) {
-          active.classList.remove('active');
-        }
-        const { id } = target.previousElementSibling;
-        const anchor = document.querySelector('a[href*=' + id + ']');
         if (anchor) {
           anchor.classList.add('active');
+        }
+      } else {
+        if (anchor) {
+          anchor.classList.remove('active');
         }
       }
     });
@@ -41,7 +41,7 @@ function App() {
   const navObserver = new IntersectionObserver(changeNav, {
     threshold: 0.8,
   });
-  const sections = document.querySelectorAll('.achievements-list');
+  const sections = document.querySelectorAll('.category-title');
   sections.forEach(section => navObserver.observe(section));
 
   const resizeGridItem = item => {

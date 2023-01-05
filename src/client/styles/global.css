@@ -452,10 +452,6 @@ header nav ul > li {
   padding: 3rem;
 }
 
-.achievements-content {
-  width: 100%;
-}
-
 h1.category-title {
   font-size: 1.8rem;
   font-style: italic;
@@ -543,7 +539,7 @@ h2.category-title {
 }
 
 .back img {
-  max-inline-size: 80%;
+  max-inline-size: 50%;
   block-size: auto;
   object-fit: contain;
 }
