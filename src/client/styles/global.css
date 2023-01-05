@@ -415,6 +415,11 @@ header nav ul > li {
   color: var(--text-inactive-color);
 }
 
+.filter-list-item > a {
+  display: flex;
+  align-items: center;
+}
+
 .filter-list-item-text {
   margin-left: 1.5rem;
   display: none;
@@ -548,12 +553,16 @@ h2.category-title {
   grid-template-areas: 'card';
 }
 
-.achievement-wrapper:hover {
+.achievement-wrapper.flipped {
   transform: scale(1.03);
   z-index: 2;
 }
 
-@keyframes unhover {
+.achievement-wrapper:hover {
+  z-index: 2;
+}
+
+/* @keyframes unhover {
   0% {
     z-index: 1;
   }
@@ -567,7 +576,7 @@ h2.category-title {
 
 .achievement-wrapper:not(:hover) {
   animation: unhover 0.5s;
-}
+} */
 
 .achievement-wrapper:nth-child(8n + 1):hover > * {
   box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-1);
@@ -598,10 +607,15 @@ h2.category-title {
   box-shadow: 0.6rem 0.6rem 0 var(--shadow-color-8);
 }
 
-.achievement-wrapper:hover .front:not(:only-child) {
+.achievement-wrapper .front:not(:only-child) {
+  cursor: pointer;
+}
+
+.achievement-wrapper.flipped .front:not(:only-child) {
   transform: rotateX(-180deg);
 }
-.achievement-wrapper:hover .back {
+
+.achievement-wrapper.flipped .back {
   transform: rotateX(0);
 }
 

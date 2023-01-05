@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#4181c5" />
+    <meta name="theme-color" content="#293c8b" />
 
     <title>Achievements<%= env %></title>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -30,10 +30,10 @@
 
       <aside class="side-bar">
         <div class="side-bar-header">
-          <button class="side-bar-close-btn" aria-label="Close Sidebar"><i class="bx bx-x bx-spin-hover"></i></button>
-          <button class="side-bar-header-btn" role="presentation" aria-label="Expand/Collapse Sidebar">
+          <a href="#" class="side-bar-close-btn" aria-label="Close Sidebar"><i class="bx bx-x bx-spin-hover"></i></a>
+          <a href="#" class="side-bar-header-btn" role="presentation" aria-label="Expand/Collapse Sidebar">
             <i class="bx bx-arrow-from-right side-bar-header-btn-icon"></i>
-          </button>
+          </a>
         </div>
         <ul class="main-category">
           <li>
@@ -168,24 +168,33 @@
       </aside>
       <div class="side-bar-dark"></div>
       <section class="sub-header">
-        <ul class="filter-list">
+        <ul class="filter-list" role="filtering">
           <li class="filter-list-item">
-            <button type="button" class="filter-list-item-side-toggle-btn">
+            <a href="#" class="filter-list-item-side-toggle-btn">
               <i class="bx bx-menu filter-list-item-icon"></i>
-            </button>
+            </a>
           </li>
           <li class="filter-list-item active">
-            <i class="bx bx-checkbox-square filter-list-item-icon"></i>
-            <span class="filter-list-item-text">전체</span>
+            <a href="#">
+              <i class="bx bx-checkbox-square filter-list-item-icon"></i>
+              <span class="filter-list-item-text">전체</span>
+            </a>
           </li>
           <li class="filter-list-item">
-            <i class="bx bx-checkbox-checked filter-list-item-icon"></i><span class="filter-list-item-text">달성</span>
+            <a href="#">
+              <i class="bx bx-checkbox-checked filter-list-item-icon"></i
+              ><span class="filter-list-item-text">달성</span>
+            </a>
           </li>
           <li class="filter-list-item">
-            <i class="bx bx-checkbox filter-list-item-icon"></i><span class="filter-list-item-text">미달성</span>
+            <a href="#">
+              <i class="bx bx-checkbox filter-list-item-icon"></i><span class="filter-list-item-text">미달성</span>
+            </a>
           </li>
           <li class="filter-list-item">
-            <i class="bx bxs-error-alt filter-list-item-icon"></i><span class="filter-list-item-text">실패</span>
+            <a href="#">
+              <i class="bx bxs-error-alt filter-list-item-icon"></i><span class="filter-list-item-text">실패</span>
+            </a>
           </li>
         </ul>
       </section>
@@ -261,7 +270,7 @@
           <h1 id="rest" class="category-title">휴식</h1>
           <h2 id="trip" class="category-title">여행</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -298,7 +307,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -328,7 +337,7 @@
                 </ul>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -363,7 +372,7 @@
                 뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.뒷면입니다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -396,7 +405,7 @@
           </div>
           <h2 id="food" class="category-title">음식</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -430,7 +439,7 @@
           </div>
           <h2 id="rest-etc" class="category-title">기타</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -460,7 +469,7 @@
                 </ul>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -490,7 +499,7 @@
                 </ul>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -503,7 +512,7 @@
           <h1 id="hobby" class="category-title">취미</h1>
           <h2 id="making" class="category-title">제작</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 시계공</dt>
@@ -511,7 +520,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> Do It Yourself!</dt>
@@ -519,7 +528,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 손목 위의 우주</dt>
@@ -527,7 +536,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 1%의 영감</dt>
@@ -535,7 +544,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> Le Corbusier</dt>
@@ -543,7 +552,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -573,7 +582,7 @@
                 </ul>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 교통 수단: 철도</dt>
@@ -603,7 +612,7 @@
                 </ul>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -612,7 +621,7 @@
               </div>
               <div class="back">Dance whole day~</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -621,7 +630,7 @@
               </div>
               <div class="back">Dance whole day~</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -629,7 +638,7 @@
                 </dl>
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 🔥교통 수단: 철도</dt>
@@ -662,7 +671,7 @@
                 <img src="https://picsum.photos/700/300.jpg" alt="" />
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -671,7 +680,7 @@
               </div>
               <div class="back">어떻게?!!!!</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 줘봐 따줄게.</dt>
@@ -685,7 +694,7 @@
           </div>
           <h2 id="computer" class="category-title">컴퓨터</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -696,7 +705,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -707,7 +716,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -716,7 +725,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -725,7 +734,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -737,7 +746,7 @@
           </div>
           <h2 id="art" class="category-title">예술</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -748,7 +757,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -759,7 +768,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -768,7 +777,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -777,7 +786,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -789,7 +798,7 @@
           </div>
           <h2 id="community" class="category-title">커뮤니티</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -800,7 +809,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -811,7 +820,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -820,7 +829,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -829,7 +838,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -841,7 +850,7 @@
           </div>
           <h2 id="hobby-etc" class="category-title">기타</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -852,7 +861,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -863,7 +872,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -872,7 +881,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -881,7 +890,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -895,7 +904,7 @@
 
           <h2 id="survival" class="category-title">생존</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -906,7 +915,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -917,7 +926,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -926,7 +935,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -935,7 +944,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -947,7 +956,7 @@
           </div>
           <h2 id="outdoor" class="category-title">야외운동</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -958,7 +967,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -969,7 +978,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -978,7 +987,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -987,7 +996,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -999,7 +1008,7 @@
           </div>
           <h2 id="indoor" class="category-title">실내운동</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1010,7 +1019,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1021,7 +1030,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1030,7 +1039,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1039,7 +1048,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1051,7 +1060,7 @@
           </div>
           <h2 id="health-etc" class="category-title">기타</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1062,7 +1071,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1073,7 +1082,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1082,7 +1091,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1091,7 +1100,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1104,7 +1113,7 @@
           <h1 id="learn" class="category-title">배움</h1>
           <h2 id="education" class="category-title">고등교육</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1115,7 +1124,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1126,7 +1135,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 22사과농장</dt>
@@ -1137,7 +1146,7 @@
                 <img src="./src/client/assets/block.png" alt="" loading="lazy" />
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1146,7 +1155,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1158,7 +1167,7 @@
           </div>
           <h2 id="certificate" class="category-title">자격</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1169,7 +1178,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1180,7 +1189,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1189,7 +1198,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1198,7 +1207,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1210,7 +1219,7 @@
           </div>
           <h2 id="language" class="category-title">언어</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1221,7 +1230,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1232,7 +1241,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1241,7 +1250,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1250,7 +1259,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1263,7 +1272,7 @@
           <h1 id="money" class="category-title">돈</h1>
           <h2 id="work" class="category-title">직업</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1274,7 +1283,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1285,7 +1294,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1294,7 +1303,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1303,7 +1312,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>
@@ -1315,7 +1324,7 @@
           </div>
           <h2 id="possession" class="category-title">소유</h2>
           <div class="achievements-list">
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 가상 부동산</dt>
@@ -1326,7 +1335,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 해피해킹</dt>
@@ -1337,7 +1346,7 @@
                 그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.그냥한다.
               </div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 사과농장</dt>
@@ -1346,7 +1355,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 게임 깎는 개발자</dt>
@@ -1355,7 +1364,7 @@
               </div>
               <div class="back">...</div>
             </div>
-            <div class="achievement-wrapper">
+            <div class="achievement-wrapper" tabindex="0">
               <div class="front">
                 <dl>
                   <dt class="achievement-title"><i class="bx bxs-check-square"></i> 생태계 기여자</dt>

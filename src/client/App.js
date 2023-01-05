@@ -29,7 +29,6 @@ function App() {
       sections[item.id] = item.offsetTop;
     });
 
-    console.log(sections);
     for (const [key, val] of Object.entries(sections)) {
       if (val <= window.scrollY + 200) {
         const active = document.querySelector('a.active');
@@ -87,6 +86,7 @@ function App() {
 
   const sideBarOpenBtn = document.querySelector('.filter-list-item-side-toggle-btn');
   sideBarOpenBtn.addEventListener('click', e => {
+    e.preventDefault();
     sideBar.classList.add('open');
   });
 
@@ -119,7 +119,7 @@ function App() {
       themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
     } else {
       themeSwitch.checked = false;
-      metaThemeColor.content = '#4181c5';
+      metaThemeColor.content = '#293c8b';
       localStorage.setItem('switchedTheme', 'light');
       themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
     }
@@ -132,7 +132,7 @@ function App() {
     ? 'bx bxs-moon theme-switcher-icon'
     : 'bx bxs-sun theme-switcher-icon';
 
-  metaThemeColor.content = themeSwitch.checked ? '#3d4852' : '#4181c5';
+  metaThemeColor.content = themeSwitch.checked ? '#3d4852' : '#293c8b';
 
   themeSwitch.addEventListener('change', e => {
     if (e.currentTarget.checked) {
@@ -140,9 +140,28 @@ function App() {
       localStorage.setItem('switchedTheme', 'dark');
       themeSwitcherIcon.classList = 'bx bxs-moon theme-switcher-icon';
     } else {
-      metaThemeColor.content = '#4181c5';
+      metaThemeColor.content = '#293c8b';
       localStorage.setItem('switchedTheme', 'light');
       themeSwitcherIcon.classList = 'bx bxs-sun theme-switcher-icon';
+    }
+  });
+
+  const achievementsContent = document.querySelector('.achievements-content');
+  achievementsContent.addEventListener('click', e => {
+    if (!e.target.closest('.achievement-wrapper')) {
+      const flippedCards = [...document.querySelectorAll('.flipped')];
+      flippedCards.forEach(item => item.classList.remove('flipped'));
+      return;
+    }
+
+    const card = e.target.closest('.achievement-wrapper');
+    card.classList.toggle('flipped');
+  });
+
+  achievementsContent.addEventListener('keypress', e => {
+    if (e.keyCode === 13) {
+      const card = document.querySelector('.achievement-wrapper:focus');
+      card.classList.toggle('flipped');
     }
   });
 }
