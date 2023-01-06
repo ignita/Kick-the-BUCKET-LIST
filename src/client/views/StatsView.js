@@ -1,3 +1,4 @@
+import { removeContent } from '../utils';
 export default class StatsView {
   constructor({ container, initState }) {
     this.container = container;
@@ -11,11 +12,8 @@ export default class StatsView {
     main.classList.add('content');
     main.innerHTML = 'Stats';
 
-    [...this.container.children].forEach(layoutTag => {
-      if (layoutTag.tagName !== 'HEADER') {
-        layoutTag.remove();
-      }
-    });
+    removeContent();
+
     this.container.append(main);
   }
 }

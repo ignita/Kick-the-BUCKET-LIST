@@ -40,6 +40,7 @@ function App($app) {
   };
 
   new Header({ container: $app, initState: routes, renderView: this.renderView });
+
   this.renderView();
   this.handleEvents();
 }

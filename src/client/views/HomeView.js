@@ -1,3 +1,5 @@
+import { removeContent } from '../utils';
+
 export default class HomeView {
   constructor({ container, initState }) {
     this.container = container;
@@ -148,11 +150,7 @@ export default class HomeView {
     </ul>
   </aside>`;
 
-    [...this.container.children].forEach(layoutTag => {
-      if (layoutTag.tagName !== 'HEADER') {
-        layoutTag.remove();
-      }
-    });
+    removeContent();
     this.container.append(wrapper);
   }
 }
