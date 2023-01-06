@@ -5,6 +5,12 @@ body {
   font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
     'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', sans-serif;
+
+  background-color: var(--bg-color);
+  background-image: linear-gradient(90deg, var(--bg-grid-color) 5%, transparent 0),
+    linear-gradient(var(--bg-grid-color) 5%, transparent 0);
+  background-size: 20px 20px;
+  background-repeat: repeat;
 }
 
 :root {
@@ -93,11 +99,6 @@ body {
 
 #app {
   color: var(--text-color);
-  background-color: var(--bg-color);
-  background-image: linear-gradient(90deg, var(--bg-grid-color) 5%, transparent 0),
-    linear-gradient(var(--bg-grid-color) 5%, transparent 0);
-  background-size: 20px 20px;
-  background-repeat: repeat;
   overflow-y: auto;
   overflow-x: hidden;
   display: grid;

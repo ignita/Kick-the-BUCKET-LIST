@@ -9,6 +9,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, './'),
     },
+    historyApiFallback: true,
   },
   entry: {
     main: ['./src/client/App.js'],
@@ -29,19 +30,6 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              fallback: 'file-loader',
-              name: '[name].[ext]?[hash]',
-            },
-          },
-        ],
       },
     ],
   },
