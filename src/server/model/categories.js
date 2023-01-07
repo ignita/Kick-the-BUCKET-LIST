@@ -2,15 +2,20 @@ module.exports = {
   async get(pool) {
     return await pool.execute(`SELECT id
                                     , name
-                                    , id as category_id
-                                    , false as is_sub
+                                    , null as title
+                                    , id as categoryId
+                                    , false as sub
                                  FROM category
                                 UNION 
-                               SELECT id,name, category_id, true as is_sub
+                               SELECT id
+                                     , name
+                                     , title
+                                     , category_id as categoryId
+                                     , true as sub
                                  FROM sub_category
-                                ORDER BY category_id, id`);
+                                ORDER BY categoryId, id`);
   },
   async getSubById(pool, id) {
-    return await pool.execute(`SELECT id, name FROM sub_category WHERE category_id = ?`, [id]);
+    return await pool.execute(`SELECT id, name, title FROM sub_category WHERE category_id = ?`, [id]);
   },
 };

@@ -1,41 +1,41 @@
 module.exports = {
   async get(pool) {
     return await pool.execute(`SELECT id
-                                    , sub_category_id
-                                    , id as achievements_id
+                                    , sub_category_id as subCategoryId
+                                    , null as achievementsId 
                                     , title
                                     , description
                                     , completed
-                                    , completed_date
+                                    , completed_date as completedDate
                                     , review
                                     , images
-                                    , is_failure
+                                    , is_failure as isFailure
                                  FROM achievements
                                 UNION
                                SELECT id
-                                    , NULL as sub_category_id
-                                    , achievements_id
+                                    , null as subCategoryId
+                                    , achievements_id as achievementsId
                                     , title
                                     , description
                                     , completed
-                                    , completed_date
+                                    , completed_date as completedDate
                                     , review
                                     , NULL as images
-                                    , is_failure
+                                    , is_failure as isFailure
                                  FROM sub_achievements
-                                ORDER BY achievements_id;`);
+                                ORDER BY IFNULL(achievementsId, id);`);
   },
   async getById(pool, id) {
     return await pool.execute(
       `SELECT id
-            , sub_category_id
+            , sub_category_id as subCategoryId
             , title
             , description
             , completed
-            , completed_date
+            , completed_date as completedDate
             , review
             , images
-            , is_failure
+            , is_failure as isFailure
          FROM achievements
         WHERE id = ?`,
       [id],
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   async create(pool, data) {
-    const { sub_category_id, title, description, completed, completed_date, review, images, is_failure } = data;
+    const { subCategoryId, title, description, completed, completedDate, review, images, isFailure } = data;
     return await pool.execute(
       `INSERT INTO achievements 
       (
@@ -58,12 +58,12 @@ module.exports = {
       ) VALUES 
       (
         ?, ?, ?, ?, ?, ?, ?, ?);`,
-      [sub_category_id, title, description, completed, completed_date, review, images, is_failure],
+      [subCategoryId, title, description, completed, completedDate, review, images, isFailure],
     );
   },
 
   async update(pool, id, data) {
-    const { sub_category_id, title, description, completed, completed_date, review, images, is_failure } = data;
+    const { subCategoryId, title, description, completed, completedDate, review, images, isFailure } = data;
     return await pool.execute(
       `UPDATE achievements 
           SET sub_category_id = ?
@@ -75,7 +75,7 @@ module.exports = {
             , images = ?
             , is_failure = ?
         WHERE id = ${id}`,
-      [sub_category_id, title, description, completed, completed_date, review, images, is_failure],
+      [subCategoryId, title, description, completed, completedDate, review, images, isFailure],
     );
   },
 

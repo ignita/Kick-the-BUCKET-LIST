@@ -2,13 +2,13 @@ module.exports = {
   async getById(pool, id) {
     return await pool.execute(
       `SELECT id
-            , achievements_id
+            , achievements_id as achievementsId
             , title 
             , description
             , completed
-            , completed_date
+            , completed_date as completedDate
             , review
-            , is_failure
+            , is_failure as isFailure
          FROM sub_achievements
         WHERE id = ?;`,
       [id],
@@ -16,7 +16,7 @@ module.exports = {
   },
 
   async create(pool, data) {
-    const { achievements_id, title, description, completed, completed_date, review, is_failure } = data;
+    const { achievementsId, title, description, completed, completedDate, review, isFailure } = data;
 
     return await pool.execute(
       `INSERT INTO sub_achievements 
@@ -30,12 +30,12 @@ module.exports = {
       , is_failure
       ) VALUES 
       (?, ?, ?, ?, ?, ?, ?);`,
-      [achievements_id, title, description, completed, completed_date, review, is_failure],
+      [achievementsId, title, description, completed, completedDate, review, isFailure],
     );
   },
 
   async update(pool, id, data) {
-    const { title, description, completed, completed_date, review, is_failure } = data;
+    const { title, description, completed, completedDate, review, isFailure } = data;
     return await pool.execute(
       `UPDATE sub_achievements 
           SET title = ?
@@ -45,7 +45,7 @@ module.exports = {
             , review = ?
             , is_failure = ?
         WHERE id = ${id}`,
-      [title, description, completed, completed_date, review, is_failure],
+      [title, description, completed, completedDate, review, isFailure],
     );
   },
 
