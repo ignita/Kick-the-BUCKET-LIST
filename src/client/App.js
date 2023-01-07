@@ -1,7 +1,6 @@
 import './styles/reset.css';
 import './styles/style.css';
 import './styles/global.css';
-import 'boxicons';
 import Header from './components/Header';
 import HomeView from './views/HomeView';
 import StatsView from './views/StatsView';

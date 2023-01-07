@@ -91,7 +91,7 @@ function App() {
     sideBar.classList.remove('open');
   });
 
-  const sideBarDark = document.querySelector('.side-bar-dark');
+  const sideBarDark = document.querySelector('.side-bar-backdrop');
   sideBarDark.addEventListener('click', e => {
     sideBar.classList.remove('open');
   });

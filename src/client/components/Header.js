@@ -57,5 +57,39 @@ export default class Header {
       window.history.pushState(null, null, path);
       this.renderView(path);
     });
+
+    const storageKey = 'theme-preference';
+    const getColorPreference = () => {
+      if (localStorage.getItem(storageKey)) {
+        return localStorage.getItem(storageKey);
+      } else {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+    };
+    const theme = { value: getColorPreference() };
+
+    const setPreference = () => {
+      localStorage.setItem(storageKey, theme.value);
+      reflectPreference();
+    };
+
+    const reflectPreference = () => {
+      document.firstElementChild.setAttribute('data-theme', theme.value);
+      document.querySelector('#theme-switcher')?.setAttribute('aria-label', theme.value);
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      metaThemeColor.content = theme.value === 'dark' ? '#3d4852' : '#293c8b';
+    };
+
+    reflectPreference();
+    document.querySelector('#theme-switcher').addEventListener('click', e => {
+      theme.value = theme.value === 'light' ? 'dark' : 'light';
+
+      setPreference();
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches: isDark }) => {
+      theme.value = isDark ? 'dark' : 'light';
+      setPreference();
+    });
   }
 }
