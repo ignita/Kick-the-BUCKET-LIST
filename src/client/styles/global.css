@@ -1,18 +1,6 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
 @import 'https://unpkg.com/open-props/easings.min.css';
 
-body {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', sans-serif;
-
-  background-color: var(--bg-color);
-  background-image: linear-gradient(90deg, var(--bg-grid-color) 5%, transparent 0),
-    linear-gradient(var(--bg-grid-color) 5%, transparent 0);
-  background-size: 20px 20px;
-  background-repeat: repeat;
-}
-
 :root {
   --shadow-color-1: #b30000;
   --shadow-color-2: #ff8000;
@@ -68,6 +56,22 @@ body {
   --border-color: var(--light-border);
   --increase-color: var(--light-increase-color);
   --decrease-color: var(--light-decrease-color);
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--sub-header-height) + 3rem);
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
+    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', sans-serif;
+
+  background-color: var(--bg-color);
+  background-image: linear-gradient(90deg, var(--bg-grid-color) 5%, transparent 0),
+    linear-gradient(var(--bg-grid-color) 5%, transparent 0);
+  background-size: 20px 20px;
+  background-repeat: repeat;
 }
 
 [data-theme='dark'] {
