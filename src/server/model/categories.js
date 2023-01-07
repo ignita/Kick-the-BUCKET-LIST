@@ -2,7 +2,7 @@ module.exports = {
   async get(pool) {
     return await pool.execute(`SELECT id
                                     , name
-                                    , null as title
+                                    , title
                                     , id as categoryId
                                     , false as sub
                                  FROM category
