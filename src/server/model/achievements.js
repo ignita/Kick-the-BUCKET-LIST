@@ -46,18 +46,18 @@ module.exports = {
     const { subCategoryId, title, description, completed, completedDate, review, images, isFailure } = data;
     return await pool.execute(
       `INSERT INTO achievements 
-      (
-        sub_category_id
-      , title
-      , description
-      , completed
-      , completed_date
-      , review
-      , images 
-      , is_failure
-      ) VALUES 
-      (
-        ?, ?, ?, ?, ?, ?, ?, ?);`,
+          (
+            sub_category_id
+          , title
+          , description
+          , completed
+          , completed_date
+          , review
+          , images 
+          , is_failure
+          ) VALUES 
+          (
+            ?, ?, ?, ?, ?, ?, ?, ?);`,
       [subCategoryId, title, description, completed, completedDate, review, images, isFailure],
     );
   },
@@ -87,11 +87,9 @@ module.exports = {
 
       await conn.execute(`DELETE FROM sub_achievements WHERE achievements_id = ?`, [id]);
       const result = await conn.execute(`DELETE FROM achievements WHERE id = ?`, [id]);
-
       await conn.commit();
       return result;
     } catch (err) {
-      console.log(err);
       await conn.rollback();
     } finally {
       if (conn) {

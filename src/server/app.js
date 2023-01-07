@@ -9,6 +9,22 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
 
+const errorLogger = (error, request, response, next) => {
+  console.error(`❗ error ${error.message}`);
+  next(error);
+};
+
+const errorResponder = (error, request, response, next) => {
+  response.header('Content-Type', 'application/json');
+  const status = error.status || 400;
+  response.status(status).send(error.message);
+};
+
+const invalidPathHandler = (request, response, next) => {
+  response.status(404);
+  response.send('invalid path');
+};
+
 app.use(helmet());
 
 app.use((req, res, next) => {
@@ -22,6 +38,10 @@ app.use(express.urlencoded({ extended: false }));
 
 const apiRouter = require('./routes/api.js');
 app.use('/api', apiRouter);
+
+app.use(errorLogger);
+app.use(errorResponder);
+app.use(invalidPathHandler);
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
