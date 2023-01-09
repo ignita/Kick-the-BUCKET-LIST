@@ -8,7 +8,7 @@ import Achievements from '../components/achievements';
 export default class HomeView {
   constructor({ container }) {
     this.container = container;
-    this.state = { categories: [], achievements: [], filterType: 0 };
+    this.state = { categories: [], achievements: [], trending: {}, filterType: 0 };
 
     this.getData();
   }
@@ -16,10 +16,12 @@ export default class HomeView {
   async getData() {
     const { data: categories } = await Api.get(`/api/categories`);
     const { data: achievements } = await Api.get(`/api/achievements`);
+    const { data: trending } = await Api.get(`/api/stats/trending`);
 
     this.setData({
       categories,
       achievements,
+      trending,
     });
   }
 

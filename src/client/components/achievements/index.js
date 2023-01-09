@@ -14,7 +14,7 @@ export default class Achievements {
   }
 
   render() {
-    new AchievementsDashboard({ container: this.target });
+    new AchievementsDashboard({ container: this.target, initState: this.state.trending });
     new AchievementsList({ container: this.target, initState: this.state });
   }
 
