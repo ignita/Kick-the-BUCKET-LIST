@@ -1,24 +1,26 @@
+const pool = require('../config/db');
+
 module.exports = {
-  async getById(pool, id) {
-    return await pool.execute(
+  async getById(id) {
+    const [subAchievement] = await pool.execute(
       `SELECT id
             , achievements_id as achievementsId
             , title 
             , description
             , completed
             , completed_date as completedDate
+            , completed_year as completedYear
             , review
             , is_failure as isFailure
          FROM sub_achievements
         WHERE id = ?;`,
       [id],
     );
+    return subAchievement;
   },
 
-  async create(pool, data) {
-    const { achievementsId, title, description, completed, completedDate, review, isFailure } = data;
-
-    return await pool.execute(
+  async create({ achievementsId, title, description, completed, completedDate, completedYear, review, isFailure }) {
+    const [newSubAchievement] = await pool.execute(
       `INSERT INTO sub_achievements 
       (
         achievements_id
@@ -26,17 +28,19 @@ module.exports = {
       , description
       , completed
       , completed_date
+      , completed_year
       , review
       , is_failure
       ) VALUES 
-      (?, ?, ?, ?, ?, ?, ?);`,
-      [achievementsId, title, description, completed, completedDate, review, isFailure],
+      (?, ?, ?, ?, ?, ?, ?, ?);`,
+      [achievementsId, title, description, completed, completedDate, completedYear, review, isFailure],
     );
+
+    return newSubAchievement;
   },
 
-  async update(pool, id, data) {
-    const { title, description, completed, completedDate, review, isFailure } = data;
-    return await pool.execute(
+  async update(id, { title, description, completed, completedDate, review, isFailure }) {
+    const [updatedSubAchievement] = await pool.execute(
       `UPDATE sub_achievements 
           SET title = ?
             , description = ?
@@ -47,9 +51,11 @@ module.exports = {
         WHERE id = ${id}`,
       [title, description, completed, completedDate, review, isFailure],
     );
+
+    return updatedSubAchievement;
   },
 
-  async delete(pool, id) {
-    return await pool.execute(`DELETE FROM sub_achievements WHERE id = ?`, [id]);
+  async delete(id) {
+    await pool.execute(`DELETE FROM sub_achievements WHERE id = ?`, [id]);
   },
 };

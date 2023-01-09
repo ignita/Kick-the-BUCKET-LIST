@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const categoriesController = require('../controller/categoriesController');
-const achievementsController = require('../controller/achievementsController');
-const subAchievementsController = require('../controller/subAchievementsController');
+const categoriesController = require('../controllers/categoriesController');
+const achievementsController = require('../controllers/achievementsController');
+const subAchievementsController = require('../controllers/subAchievementsController');
 
 router.get('/categories', categoriesController.all);
+router.get('/categories/:id', categoriesController.getSubById);
 
 router.get('/achievements', achievementsController.all);
 router.get('/achievements/:id', achievementsController.get);

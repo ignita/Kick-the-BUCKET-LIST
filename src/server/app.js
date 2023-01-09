@@ -1,24 +1,13 @@
 const express = require('express');
 const logger = require('morgan');
 const helmet = require('helmet');
-
-const pool = require('./config/db.js');
+const errorHandler = require('./middlewares/errorHandler');
+const pool = require('./config/db');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
-
-const errorLogger = (error, request, response, next) => {
-  console.error(`❗ error ${error.message}`);
-  next(error);
-};
-
-const errorResponder = (error, request, response, next) => {
-  response.header('Content-Type', 'application/json');
-  const status = error.status || 400;
-  response.status(status).send(error.message);
-};
 
 const invalidPathHandler = (request, response, next) => {
   response.status(404);
@@ -39,8 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 const apiRouter = require('./routes/api.js');
 app.use('/api', apiRouter);
 
-app.use(errorLogger);
-app.use(errorResponder);
+app.use(errorHandler);
 app.use(invalidPathHandler);
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
