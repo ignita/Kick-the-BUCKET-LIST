@@ -33,9 +33,26 @@ function App($app) {
   };
 
   this.handleEvents = () => {
-    window.addEventListener('popstate', () => {
+    window.addEventListener('popstate', e => {
       this.renderView();
     });
+
+    const resizeGridItem = item => {
+      const grid = item.parentElement;
+      const allCards = [...grid.querySelectorAll('.front')];
+      const minHeight = Math.min(...allCards.map(card => card.getBoundingClientRect().height));
+      const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+      const contentHeight = item.querySelector('.front').getBoundingClientRect().height + rowGap;
+      const rowSpan = Math.ceil(contentHeight / (minHeight + rowGap));
+      item.style.gridRowEnd = 'span ' + rowSpan;
+    };
+
+    const resizeAllGridItems = () => {
+      const allItems = [...document.querySelectorAll('.achievement-wrapper')];
+      allItems.forEach(item => resizeGridItem(item));
+    };
+
+    window.addEventListener('resize', resizeAllGridItems);
   };
 
   new Header({ container: $app, initState: routes, renderView: this.renderView });

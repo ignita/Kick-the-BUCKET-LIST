@@ -18,4 +18,29 @@ const CATEGORY_ICON = {
   possession: 'bx bxs-box',
 };
 
-export { CATEGORY_ICON };
+const FILTER_TYPE = {
+  ALL: 0,
+  COMPLETED: 1,
+  INCOMPLETED: 2,
+  FAILURE: 3,
+};
+
+const FILTER_ITEMS = [
+  {
+    type: FILTER_TYPE.ALL,
+    title: '전체',
+  },
+  {
+    type: FILTER_TYPE.COMPLETED,
+    title: '달성',
+  },
+  {
+    type: FILTER_TYPE.INCOMPLETED,
+    title: '미달성',
+  },
+  {
+    type: FILTER_TYPE.FAILURE,
+    title: '실패',
+  },
+];
+export { CATEGORY_ICON, FILTER_TYPE, FILTER_ITEMS };

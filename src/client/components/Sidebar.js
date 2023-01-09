@@ -7,128 +7,7 @@ export default class Siebar {
     this.target.classList = 'side-bar';
     this.container.appendChild(this.target);
 
-    this.state = [
-      {
-        id: 1,
-        name: 'rest',
-        title: '휴식',
-        subCategories: [
-          {
-            id: 1,
-            name: 'trip',
-            title: '여행',
-          },
-          {
-            id: 2,
-            name: 'food',
-            title: '음식',
-          },
-          {
-            id: 3,
-            name: 'rest-etc',
-            title: '기타',
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: 'hobby',
-        title: '취미',
-        subCategories: [
-          {
-            id: 4,
-            name: 'making',
-            title: '제작',
-          },
-          {
-            id: 5,
-            name: 'computer',
-            title: '컴퓨터',
-          },
-          {
-            id: 6,
-            name: 'art',
-            title: '예술',
-          },
-          {
-            id: 7,
-            name: 'community',
-            title: '커뮤니티',
-          },
-          {
-            id: 8,
-            name: 'hobby-etc',
-            title: '기타',
-          },
-        ],
-      },
-      {
-        id: 3,
-        name: 'health',
-        title: '건강',
-        subCategories: [
-          {
-            id: 9,
-            name: 'survival',
-            title: '생존',
-          },
-          {
-            id: 10,
-            name: 'outdoor',
-            title: '야외운동',
-          },
-          {
-            id: 11,
-            name: 'indoor',
-            title: '실내운동',
-          },
-          {
-            id: 12,
-            name: 'health-etc',
-            title: '기타',
-          },
-        ],
-      },
-      {
-        id: 4,
-        name: 'learn',
-        title: '배움',
-        subCategories: [
-          {
-            id: 13,
-            name: 'education',
-            title: '고등 교육',
-          },
-          {
-            id: 14,
-            name: 'certificate',
-            title: '자격',
-          },
-          {
-            id: 15,
-            name: 'language',
-            title: '언어',
-          },
-        ],
-      },
-      {
-        id: 5,
-        name: 'money',
-        title: '돈',
-        subCategories: [
-          {
-            id: 16,
-            name: 'work',
-            title: '직업',
-          },
-          {
-            id: 17,
-            name: 'possession',
-            title: '소유',
-          },
-        ],
-      },
-    ];
+    this.state = initState;
     this.render();
     this.handleEvents();
   }
@@ -169,21 +48,19 @@ export default class Siebar {
   }
 
   handleEvents() {
-    const sideBar = document.querySelector('.side-bar');
-
-    const sideBarCloseBtn = document.querySelector('.side-bar-close-btn');
+    const sideBarCloseBtn = this.target.querySelector('.side-bar-close-btn');
     sideBarCloseBtn.addEventListener('click', e => {
       e.preventDefault();
-      sideBar.classList.remove('open');
+      this.target.classList.remove('open');
     });
 
-    const sideBarHeaderBtn = document.querySelector('.side-bar-header-btn');
-    const sideBarHeaderBtnIcon = document.querySelector('.side-bar-header-btn-icon');
+    const sideBarHeaderBtn = this.target.querySelector('.side-bar-header-btn');
+    const sideBarHeaderBtnIcon = this.target.querySelector('.side-bar-header-btn-icon');
     sideBarHeaderBtn.addEventListener('click', e => {
       e.preventDefault();
-      sideBar.classList.toggle('collapse');
+      this.target.classList.toggle('collapse');
 
-      sideBarHeaderBtnIcon.classList = sideBar.classList.contains('collapse')
+      sideBarHeaderBtnIcon.classList = this.target.classList.contains('collapse')
         ? 'bx bx-arrow-from-left side-bar-header-btn-icon'
         : 'bx bx-arrow-from-right side-bar-header-btn-icon';
     });
@@ -191,7 +68,23 @@ export default class Siebar {
     const mediaSize992 = window.matchMedia('(min-width: 992px)');
     mediaSize992.addEventListener('change', e => {
       if (e.matches) {
-        sideBar.classList.remove('open');
+        this.target.classList.remove('open');
+      }
+    });
+
+    this.target.addEventListener('click', e => {
+      if (!e.target.closest('.sub-category-item')) {
+        return;
+      }
+      e.preventDefault();
+      const anchor = e.target.closest('a');
+      const [prefix, category] = anchor.hash.split('#');
+
+      const categoryHeader = document.querySelector(`h2#${category}`);
+      if (categoryHeader) {
+        categoryHeader.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert('해당 카테고리 항목이 없습니다!');
       }
     });
   }

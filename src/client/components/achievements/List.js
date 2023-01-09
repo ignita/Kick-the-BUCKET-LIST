@@ -1,4 +1,5 @@
 import AchievementsCard from './Card';
+import { FILTER_TYPE } from '../../constants';
 
 export default class AchievementsList {
   constructor({ container, initState }) {
@@ -32,24 +33,53 @@ export default class AchievementsList {
   }
 
   render() {
-    const { categories, achievements } = this.state;
-    categories.forEach(({ title, name, subCategories }) => {
-      const categoryTitle = this.renderCategoryTitle({ name, title });
-      this.container.appendChild(categoryTitle);
+    const { categories, achievements, filterType } = this.state;
 
-      subCategories.forEach(({ id, name, title }) => {
-        const categoryTitle = this.renderSubCategoryTitle({ name, title });
+    let filtered = [];
+    switch (filterType) {
+      case FILTER_TYPE.ALL:
+        filtered = achievements;
+        break;
+      case FILTER_TYPE.COMPLETED:
+        filtered = achievements.filter(item => {
+          return item.completed || item.subAchievements.some(subItem => subItem.completed);
+        });
+        break;
+      case FILTER_TYPE.INCOMPLETED:
+        filtered = achievements.filter(item => !item.completed);
+        break;
+      case FILTER_TYPE.FAILURE:
+        filtered = achievements.filter(item => {
+          return item.isFailure || item.subAchievements.some(subItem => subItem.isFailure);
+        });
+        break;
+    }
+
+    categories.forEach(({ title, name, subCategories }) => {
+      const subCategoryIds = subCategories.map(({ id }) => id);
+      const hasItem = filtered.some(item => subCategoryIds.includes(item.subCategoryId));
+
+      if (hasItem) {
+        const categoryTitle = this.renderCategoryTitle({ name, title });
         this.container.appendChild(categoryTitle);
 
-        const achievementWrapper = document.createElement('div');
-        achievementWrapper.className = 'achievements-list';
-        const achievementsByCategory = achievements.filter(({ subCategoryId }) => subCategoryId === id);
-        achievementsByCategory.forEach(achievement => {
-          new AchievementsCard({ container: achievementWrapper, initState: achievement });
-        });
+        subCategories.forEach(({ id, name, title }) => {
+          const hasItem = filtered.some(item => id === item.subCategoryId);
+          if (hasItem) {
+            const categoryTitle = this.renderSubCategoryTitle({ name, title });
+            this.container.appendChild(categoryTitle);
 
-        this.container.appendChild(achievementWrapper);
-      });
+            const achievementWrapper = document.createElement('div');
+            achievementWrapper.className = 'achievements-list';
+            const achievementsByCategory = filtered.filter(({ subCategoryId }) => subCategoryId === id);
+            achievementsByCategory.forEach(achievement => {
+              new AchievementsCard({ container: achievementWrapper, initState: achievement });
+            });
+
+            this.container.appendChild(achievementWrapper);
+          }
+        });
+      }
     });
   }
 
