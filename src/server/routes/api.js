@@ -4,6 +4,7 @@ const router = express.Router();
 const categoriesController = require('../controllers/categoriesController');
 const achievementsController = require('../controllers/achievementsController');
 const subAchievementsController = require('../controllers/subAchievementsController');
+const statsController = require('../controllers/statsController');
 
 router.get('/categories', categoriesController.all);
 router.get('/categories/:id', categoriesController.getSubById);
@@ -18,5 +19,7 @@ router.get('/sub-achievements/:id', subAchievementsController.get);
 router.post('/sub-achievements', subAchievementsController.store);
 router.put('/sub-achievements/:id', subAchievementsController.update);
 router.delete('/sub-achievements/:id', subAchievementsController.delete);
+
+router.get('/stats/trending', statsController.getTrending);
 
 module.exports = router;
