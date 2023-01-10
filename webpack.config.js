@@ -1,29 +1,17 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
-  devServer: {
-    proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-        secure: false,
-        changeOrigin: true,
-      },
-    },
-    static: {
-      directory: path.join(__dirname, './'),
-    },
-    historyApiFallback: true,
-  },
+export default {
   entry: {
     main: ['./src/client/App.js'],
   },
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js',
+  },
+  resolve: {
+    extensions: ['.js'],
   },
   module: {
     rules: [
@@ -32,6 +20,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+        },
+        resolve: {
+          fullySpecified: false,
         },
       },
       {

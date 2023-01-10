@@ -31,7 +31,8 @@
     "express": "^4.18.2",
     "helmet": "^6.0.1",
     "morgan": "^1.10.0",
-    "mysql2": "3.0.0-rc.1"
+    "mysql2": "3.0.0-rc.1",
+    "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
     "babel-loader": "^9.1.0",

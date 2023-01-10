@@ -7,6 +7,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import apiRouter from './routes/api.js';
 
+import webpackConfig from '../../webpack.dev.js';
 
 const app = express();
 
