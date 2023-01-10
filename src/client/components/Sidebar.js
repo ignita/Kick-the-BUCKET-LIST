@@ -1,4 +1,5 @@
 import { CATEGORY_ICON } from '../constants';
+import { showToastMessage } from '../utils';
 
 export default class Siebar {
   constructor({ container, initState }) {
@@ -84,7 +85,7 @@ export default class Siebar {
       if (categoryHeader) {
         categoryHeader.scrollIntoView({ behavior: 'smooth' });
       } else {
-        alert('해당 카테고리 항목이 없습니다!');
+        showToastMessage('해당 카테고리 항목이 없습니다!');
       }
     });
   }
