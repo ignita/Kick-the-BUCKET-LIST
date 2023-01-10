@@ -3,9 +3,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-  entry: {
-    main: ['./src/client/App.js'],
-  },
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js',

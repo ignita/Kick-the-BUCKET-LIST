@@ -23,6 +23,7 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
+    "connect-history-api-fallback": "^2.0.0",
     "core-js": "^3.26.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
