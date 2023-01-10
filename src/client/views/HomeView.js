@@ -14,9 +14,9 @@ export default class HomeView {
   }
 
   async getData() {
-    const { data: categories } = await Api.get(`/api/categories`);
-    const { data: achievements } = await Api.get(`/api/achievements`);
-    const { data: trending } = await Api.get(`/api/stats/trending`);
+    const { data: categories = [] } = await Api.get(`/api/categories`);
+    const { data: achievements = [] } = await Api.get(`/api/achievements`);
+    const { data: trending = {} } = await Api.get(`/api/stats/trending`);
 
     this.setData({
       categories,

@@ -18,9 +18,9 @@ const request = async params => {
 const parseResponse = async response => {
   const { status, ok } = response;
 
-  let data;
+  let data = {};
   if (ok) {
-    data = await response.json();
+    data = (await response.json()) || {};
   }
 
   return {
