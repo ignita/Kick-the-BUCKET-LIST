@@ -17,7 +17,11 @@ const invalidPathHandler = (request, response, next) => {
   response.send('invalid path');
 };
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+  }),
+);
 
 app.use(logger('common'));
 app.use(express.json());
