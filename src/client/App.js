@@ -1,5 +1,3 @@
-import.meta.webpackHot.accept();
-
 import './styles/reset.css';
 import './styles/style.css';
 import './styles/global.css';
@@ -65,3 +63,7 @@ function App($app) {
 }
 
 new App(document.querySelector('#app'));
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept();
+}

@@ -12,21 +12,21 @@ export default class AchievementsDashboard {
 
   render() {
     const {
-      thisYear,
-      thisYearTrending,
-      gapThisYear,
-      lastYear,
-      lastYearTrending,
-      gapLastYear,
-      yearBeforeLast,
-      yearBeforeLastTrending,
-      gapYearBeforeLast,
-      lastThreeYears,
-      lastThreeYearsTrending,
-      gapLastThreeYears,
-      incompleted,
-      total,
-      completed,
+      thisYear = 0,
+      thisYearTrending = 0,
+      gapThisYear = 0,
+      lastYear = 0,
+      lastYearTrending = 0,
+      gapLastYear = 0,
+      yearBeforeLast = 0,
+      yearBeforeLastTrending = 0,
+      gapYearBeforeLast = 0,
+      lastThreeYears = 0,
+      lastThreeYearsTrending = 0,
+      gapLastThreeYears = 0,
+      incompleted = 0,
+      total = 0,
+      completed = 0,
     } = this.state;
 
     this.target.innerHTML = `

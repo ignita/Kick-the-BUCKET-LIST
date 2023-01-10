@@ -1,10 +1,9 @@
 import { merge } from 'webpack-merge';
 import webpackConfig from './webpack.config.js';
-import path from 'path';
-const __dirname = path.resolve();
 
 export default merge(webpackConfig, {
   mode: 'development',
+  entry: ['webpack-hot-middleware/client?timeout=20000', './src/client/App.js'],
   devtool: 'cheap-module-source-map',
   devServer: {
     proxy: {
@@ -13,9 +12,6 @@ export default merge(webpackConfig, {
         secure: false,
         changeOrigin: true,
       },
-    },
-    static: {
-      directory: path.join(__dirname, './'),
     },
     historyApiFallback: true,
   },
