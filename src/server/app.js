@@ -2,12 +2,13 @@ import express from 'express';
 import logger from 'morgan';
 import helmet from 'helmet';
 import errorHandler from './middlewares/errorHandler.js';
+
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import apiRouter from './routes/api.js';
-
 import webpackConfig from '../../webpack.dev.js';
+
+import apiRouter from './routes/api.js';
 
 const app = express();
 
