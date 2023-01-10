@@ -1,9 +1,9 @@
-const achievementsModel = require('../models/achievementsModel');
-const STATUS_CODE = require('../constants/statusCode');
-const ApplicationError = require('../common/applicationError');
-const utils = require('../utils');
+import achievementsModel from '../models/achievementsModel.js';
+import STATUS_CODE from '../constants/statusCode.js';
+import ApplicationError from '../common/applicationError.js';
+import utils from '../utils/index.js';
 
-module.exports = {
+export default {
   async get() {
     const allAchievements = await achievementsModel.get();
     const mainAchievements = allAchievements.filter(({ achievementsId }) => !achievementsId);

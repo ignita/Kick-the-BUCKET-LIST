@@ -2,6 +2,7 @@
   "name": "achievements",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",

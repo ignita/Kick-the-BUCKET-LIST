@@ -1,7 +1,7 @@
-const categoriesService = require('../services/categoriesService');
-const STATUS_CODE = require('../constants/statusCode');
+import categoriesService from '../services/categoriesService.js';
+import STATUS_CODE from '../constants/statusCode.js';
 
-module.exports = {
+export default {
   async all(req, res, next) {
     try {
       const data = await categoriesService.get();

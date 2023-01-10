@@ -1,7 +1,7 @@
-const achievementsService = require('../services/achievementsService');
-const STATUS_CODE = require('../constants/statusCode');
+import achievementsService from '../services/achievementsService.js';
+import STATUS_CODE from '../constants/statusCode.js';
 
-module.exports = {
+export default {
   async all(req, res, next) {
     try {
       const data = await achievementsService.get();

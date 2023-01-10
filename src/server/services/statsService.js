@@ -1,6 +1,6 @@
-const statsModel = require('../models/statsModel');
+import statsModel from '../models/statsModel.js';
 
-module.exports = {
+export default {
   async getTrending() {
     const [trending] = await statsModel.getTrending();
     return trending;

@@ -1,4 +1,4 @@
-const statusCode = require('../constants/statusCode');
+import statusCode from '../constants/statusCode.js';
 
 const errorHandler = (error, request, response, next) => {
   const status = error.statusCode || statusCode.INTERNAL_SERVER_ERROR;
@@ -8,4 +8,4 @@ const errorHandler = (error, request, response, next) => {
   });
 };
 
-module.exports = errorHandler;
+export default errorHandler;

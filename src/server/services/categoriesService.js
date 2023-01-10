@@ -1,8 +1,8 @@
-const STATUS_CODE = require('../constants/statusCode');
-const ApplicationError = require('../common/applicationError');
-const categoriesModel = require('../models/categoriesModel');
+import STATUS_CODE from '../constants/statusCode.js';
+import ApplicationError from '../common/applicationError.js';
+import categoriesModel from '../models/categoriesModel.js';
 
-module.exports = {
+export default {
   async get() {
     const allCategories = await categoriesModel.get();
     const mainCategories = allCategories.filter(({ sub }) => !sub);

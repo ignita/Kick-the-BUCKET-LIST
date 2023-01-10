@@ -1,7 +1,7 @@
-const statsService = require('../services/statsService');
-const STATUS_CODE = require('../constants/statusCode');
+import statsService from '../services/statsService.js';
+import STATUS_CODE from '../constants/statusCode.js';
 
-module.exports = {
+export default {
   async getTrending(req, res, next) {
     try {
       const data = await statsService.getTrending();
