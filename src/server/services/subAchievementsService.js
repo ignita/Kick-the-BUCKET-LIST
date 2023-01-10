@@ -1,8 +1,8 @@
-const subAchievementsModel = require('../models/subAchievementsModel');
-const STATUS_CODE = require('../constants/statusCode');
-const ApplicationError = require('../common/applicationError');
+import subAchievementsModel from '../models/subAchievementsModel.js';
+import STATUS_CODE from '../constants/statusCode.js';
+import ApplicationError from '../common/applicationError.js';
 
-module.exports = {
+export default {
   async getById(id) {
     const subAchievement = await subAchievementsModel.getById(id);
     if (!subAchievement.length) {

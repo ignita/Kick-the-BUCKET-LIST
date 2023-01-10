@@ -1,6 +1,6 @@
-const pool = require('../config/db');
+import pool from '../config/db.js';
 
-module.exports = {
+export default {
   async getTrending() {
     const [trending] = await pool.execute(
       `SELECT thisYear
