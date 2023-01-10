@@ -4,12 +4,9 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "dev": "NODE_ENV=development node ./src/server/bin/www",
-    "start": "NODE_ENV=production node ./src/server/bin/www",
-    "client:dev": "NODE_ENV=development webpack serve --open",
-    "server:dev": "nodemon ./src/server/bin/www"
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "start": "NODE_ENV=production npm run build && node ./src/server/bin/www",
+    "dev": "NODE_ENV=development nodemon ./src/server/bin/www"
   },
   "repository": {
     "type": "git",
