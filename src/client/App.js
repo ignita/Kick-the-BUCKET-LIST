@@ -27,8 +27,12 @@ const routes = [
 ];
 
 function App($app) {
+  const contents = document.createElement('div');
+  contents.className = 'contents';
+  $app.appendChild(contents);
+
   this.renderView = (path = window.location.pathname) => {
-    const container = $app;
+    const container = document.querySelector('.contents');
     const View = routes.find(route => route.path === path)?.view || NotFoundView;
     new View({ container });
   };

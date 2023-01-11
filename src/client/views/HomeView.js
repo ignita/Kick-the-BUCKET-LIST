@@ -8,7 +8,7 @@ import Achievements from '../components/achievements';
 export default class HomeView {
   constructor({ container }) {
     this.container = container;
-    this.state = { categories: [], achievements: [], trending: {}, filterType: 0 };
+    this.state = { categories: [], achievements: [], trending: {}, filterType: 0, loading: true };
 
     this.getData();
   }
