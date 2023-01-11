@@ -1,12 +1,3 @@
-const removeContent = () => {
-  const container = document.querySelector('#app');
-  [...container.children].forEach(child => {
-    if (!(child.tagName === 'HEADER' || child.classList.contains('toast'))) {
-      child.remove();
-    }
-  });
-};
-
 const showToastMessage = message => {
   const toast = document.querySelector('.toast');
 
@@ -22,4 +13,4 @@ const showToastMessage = message => {
   }, 3000);
 };
 
-export { removeContent, showToastMessage };
+export { showToastMessage };

@@ -1,5 +1,3 @@
-import { removeContent } from '../utils';
-import { FILTER_TYPE } from '../constants';
 import Api from '../utils/http';
 import Sidebar from '../components/Sidebar';
 import SubHeader from '../components/SubHeader';
@@ -39,7 +37,7 @@ export default class HomeView {
   };
 
   render() {
-    removeContent();
+    this.container.innerHTML = '';
     new Sidebar({ container: this.container, initState: this.state.categories });
     new Backdrop({ container: this.container });
     new SubHeader({ container: this.container, initState: this.state.filterType, onFilter: this.filterData });
