@@ -137,7 +137,7 @@ function App() {
     setPreference();
   });
 
-  const achievementsContent = document.querySelector('.achievements-content');
+  const achievementsContent = document.querySelector('.achievements-wrapper');
   achievementsContent.addEventListener('click', e => {
     if (!e.target.closest('.achievement-wrapper')) {
       const flippedCards = [...document.querySelectorAll('.flipped')];
@@ -158,6 +158,6 @@ function App() {
 }
 App();
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }

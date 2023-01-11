@@ -1,4 +1,3 @@
-import { removeContent } from '../utils';
 export default class StatsView {
   constructor({ container, initState }) {
     this.container = container;
@@ -8,11 +7,10 @@ export default class StatsView {
   }
 
   render() {
+    this.container.innerHTML = '';
     const main = document.createElement('main');
     main.classList.add('content');
     main.innerHTML = 'Stats';
-
-    removeContent();
 
     this.container.append(main);
   }
