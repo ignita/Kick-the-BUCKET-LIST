@@ -3,11 +3,13 @@ import Sidebar from '../components/Sidebar';
 import SubHeader from '../components/SubHeader';
 import Backdrop from '../components/Backdrop';
 import Achievements from '../components/achievements';
+import Loader from '../components/Loader';
 export default class HomeView {
   constructor({ container }) {
     this.container = container;
     this.state = { categories: [], achievements: [], trending: {}, filterType: 0, loading: true };
 
+    this.render();
     this.getData();
   }
 
@@ -20,6 +22,7 @@ export default class HomeView {
       categories,
       achievements,
       trending,
+      loading: false,
     });
   }
 
@@ -38,6 +41,7 @@ export default class HomeView {
 
   render() {
     this.container.innerHTML = '';
+    new Loader({ container: this.container, initState: this.state.loading });
     new Sidebar({ container: this.container, initState: this.state.categories });
     new Backdrop({ container: this.container });
     new SubHeader({ container: this.container, initState: this.state.filterType, onFilter: this.filterData });
