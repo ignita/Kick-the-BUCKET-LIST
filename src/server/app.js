@@ -14,8 +14,18 @@ import apiRouter from './routes/api.js';
 
 const app = express();
 
+const defaultDirectives = helmet.contentSecurityPolicy.getDefaultDirectives();
+const upgradeInsecureRequests = 'upgrade-insecure-requests';
+const { [upgradeInsecureRequests]: removeDirective, ...otherDefaultDirectives } = defaultDirectives;
+
 app.use(
   helmet({
+    contentSecurityPolicy: {
+      useDefaults: false,
+      directives: {
+        ...otherDefaultDirectives,
+      },
+    },
     crossOriginEmbedderPolicy: false,
   }),
 );
