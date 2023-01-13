@@ -1,13 +1,13 @@
 import { FILTER_ITEMS, FILTER_TYPE } from '../constants';
 export default class Siebar {
-  constructor({ container, initState, onFilter }) {
+  constructor({ container, initState, setState }) {
     this.container = container;
     this.target = document.createElement('section');
     this.target.classList = 'sub-header';
     this.container.appendChild(this.target);
 
     this.state = initState;
-    this.filterItem = onFilter;
+    this.setState = setState;
 
     this.render();
     this.handleEvents();
@@ -22,10 +22,10 @@ export default class Siebar {
           <i class="bx bx-menu filter-list-item-icon"></i>
         </a>
       </li>
-      ${FILTER_ITEMS.map(({ type, title }) => {
+      ${FILTER_ITEMS.map(({ type, title, icon }) => {
         return `<li class="filter-list-item${filterType === type ? ` active` : ``} " data-filter-type="${type}">
           <a href="#">
-            <i class="bx bx-checkbox-square filter-list-item-icon"></i>
+            <i class="${icon}  filter-list-item-icon"></i>
             <span class="filter-list-item-text">${title}</span>
           </a>
         </li>`;
@@ -57,7 +57,8 @@ export default class Siebar {
       item.classList.add('active');
 
       const { filterType } = item.dataset;
-      this.filterItem({ filterType: Number(filterType) });
+      const collapse = document.querySelector('.collapse');
+      this.setState({ filterType: Number(filterType), sidebarCollapse: collapse });
     });
   }
 }

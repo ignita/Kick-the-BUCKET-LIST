@@ -9,6 +9,7 @@ export default class Siebar {
     this.container.appendChild(this.target);
 
     this.state = initState;
+    this.target.classList.toggle('collapse', this.state.sidebarCollapse);
     this.render();
     this.handleEvents();
   }
@@ -20,13 +21,15 @@ export default class Siebar {
         <i class="bx bx-x bx-spin-hover"></i>
       </a>
       <a href="#" class="side-bar-header-btn" role="presentation" aria-label="Expand/Collapse Sidebar">
-        <i class="bx bx-arrow-from-right side-bar-header-btn-icon"></i>
+        <i class="bx bx-arrow-from-${this.state.sidebarCollapse ? 'left' : 'right'} side-bar-header-btn-icon"></i>
       </a>
     </div>`;
+
+    const { categories } = this.state;
     this.target.innerHTML =
       sidebarHeader +
       `<ul class="main-category">
-    ${this.state
+    ${categories
       .map(({ title, name, subCategories }) => {
         return `<li>
           <a class="main-category-header" href="#${name}">${title}</a>
@@ -59,8 +62,8 @@ export default class Siebar {
     const sideBarHeaderBtnIcon = this.target.querySelector('.side-bar-header-btn-icon');
     sideBarHeaderBtn.addEventListener('click', e => {
       e.preventDefault();
-      this.target.classList.toggle('collapse');
 
+      this.target.classList.toggle('collapse');
       sideBarHeaderBtnIcon.classList = this.target.classList.contains('collapse')
         ? 'bx bx-arrow-from-left side-bar-header-btn-icon'
         : 'bx bx-arrow-from-right side-bar-header-btn-icon';
