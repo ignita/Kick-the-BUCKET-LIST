@@ -29,18 +29,22 @@ const FILTER_ITEMS = [
   {
     type: FILTER_TYPE.ALL,
     title: '전체',
+    icon: 'bx bx-checkbox-square',
   },
   {
     type: FILTER_TYPE.COMPLETED,
     title: '달성',
+    icon: 'bx bx-checkbox-checked',
   },
   {
     type: FILTER_TYPE.INCOMPLETED,
     title: '미달성',
+    icon: 'bx bx-checkbox',
   },
   {
     type: FILTER_TYPE.FAILURE,
     title: '실패',
+    icon: 'bx bxs-error-alt',
   },
 ];
 export { CATEGORY_ICON, FILTER_TYPE, FILTER_ITEMS };

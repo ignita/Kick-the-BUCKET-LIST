@@ -7,7 +7,14 @@ import Loader from '../components/Loader';
 export default class HomeView {
   constructor({ container }) {
     this.container = container;
-    this.state = { categories: [], achievements: [], trending: {}, filterType: 0, loading: true };
+    this.state = {
+      categories: [],
+      achievements: [],
+      trending: {},
+      filterType: 0,
+      loading: true,
+      sidebarCollapse: false,
+    };
 
     this.render();
     this.getData();
@@ -18,7 +25,7 @@ export default class HomeView {
     const { data: achievements = [] } = await Api.get(`/api/achievements`);
     const { data: trending = {} } = await Api.get(`/api/stats/trending`);
 
-    this.setData({
+    this.setState({
       categories,
       achievements,
       trending,
@@ -26,25 +33,23 @@ export default class HomeView {
     });
   }
 
-  setData(data) {
+  setState(newState) {
     this.state = {
       ...this.state,
-      ...data,
+      ...newState,
     };
-
     this.render();
   }
-
-  filterData = ({ filterType }) => {
-    this.setData({ filterType });
-  };
 
   render() {
     this.container.innerHTML = '';
     new Loader({ container: this.container, initState: this.state.loading });
-    new Sidebar({ container: this.container, initState: this.state.categories });
+    new Sidebar({
+      container: this.container,
+      initState: { categories: this.state.categories, sidebarCollapse: this.state.sidebarCollapse },
+    });
     new Backdrop({ container: this.container });
-    new SubHeader({ container: this.container, initState: this.state.filterType, onFilter: this.filterData });
+    new SubHeader({ container: this.container, initState: this.state.filterType, setState: this.setState.bind(this) });
     new Achievements({ container: this.container, initState: this.state });
   }
 }
