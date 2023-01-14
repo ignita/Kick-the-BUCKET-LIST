@@ -12,4 +12,25 @@ export default {
       next(err);
     }
   },
+  async getRatioByCategories(req, res, next) {
+    try {
+      const data = await statsService.getRatioByCategories();
+      res.status(STATUS_CODE.OK).json({
+        data,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  async getCompletedByYears(req, res, next) {
+    try {
+      const data = await statsService.getCompletedByYears();
+      res.status(STATUS_CODE.OK).json({
+        data,
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
 };

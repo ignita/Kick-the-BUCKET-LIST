@@ -58,4 +58,65 @@ export default {
     );
     return trending;
   },
+  async getRatioByCategories(type) {
+    const [ratioByCategories] = await pool.execute(
+      `
+      SELECT t1.cnt
+           , t1.sub_category_id as subCategoryId
+           , t1.name
+           , CASE WHEN t1.title = '기타' THEN CONCAT('기타 (', (SELECT title FROM category WHERE id = t1.category_id), ')')
+                  ELSE t1.title
+             END as title
+           , ROUND((t1.cnt / SUM(t1.cnt) OVER ()) * 100, 2) as rat
+        FROM (SELECT count(total.id) as cnt
+                   , total.sub_category_id
+                   , sub_category.name
+                   , sub_category.title     
+                   , sub_category.category_id 
+                FROM (SELECT id
+                           , title
+                           , sub_category_id
+                        FROM achievements
+                       WHERE id NOT IN (SELECT achievements_id 
+                                          FROM sub_achievements
+                                          ${type === 'total' ? '' : `WHERE completed = ${type}`})
+                      ${type === 'total' ? '' : `AND achievements.completed = ${type}`}
+                       UNION 
+                      SELECT sub_achievements.id
+                           , sub_achievements.title
+                           , achievements.sub_category_id as sub_category_id
+                        FROM sub_achievements
+                       INNER JOIN achievements 
+                          ON achievements.id = sub_achievements.achievements_id
+                      ${type === 'total' ? '' : `WHERE achievements.completed = ${type}`}
+                      ) as total
+               INNER JOIN sub_category 
+                  ON total.sub_category_id = sub_category.id
+               GROUP BY total.sub_category_id) t1
+    ORDER BY t1.cnt desc
+      `,
+    );
+    return ratioByCategories;
+  },
+
+  async getCompletedByYears(start, end) {
+    const [completedByYears] = await pool.execute(`
+    SELECT count(t1.id) as cnt
+         , t1.year
+      FROM (SELECT id, title, ifnull(YEAR(completed_date), completed_year) as year
+              FROM achievements
+		         WHERE completed = 1
+		           AND id not in (SELECT achievements_id 
+							                  FROM sub_achievements
+						                   WHERE completed = 1)
+             UNION all
+            SELECT id, title, ifnull(YEAR(completed_date), completed_year) as year
+              FROM sub_achievements
+             WHERE completed = 1) t1
+    WHERE t1.year between '${start}' and '${end} '
+    GROUP BY t1.year
+    ORDER BY t1.year
+  `);
+    return completedByYears;
+  },
 };
