@@ -21,5 +21,7 @@ router.put('/sub-achievements/:id', subAchievementsController.update);
 router.delete('/sub-achievements/:id', subAchievementsController.delete);
 
 router.get('/stats/trending', statsController.getTrending);
+router.get('/stats/categories', statsController.getRatioByCategories);
+router.get('/stats/years', statsController.getCompletedByYears);
 
 export default router;
