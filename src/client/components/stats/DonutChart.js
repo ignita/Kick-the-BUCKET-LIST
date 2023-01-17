@@ -1,35 +1,34 @@
 import { CATEGORY_COLORS } from '../../constants/colors.js';
+import Component from '../../core/Component.js';
 
-export default class DonutChart {
-  constructor({ parent, props }) {
-    this.target = document.createElement('div');
-    this.target.className = 'donut-chart-wrapper';
-    this.canvas = document.createElement('canvas');
-    this.canvas.width = 100;
-    this.canvas.height = 100;
+export default class DonutChart extends Component {
+  constructor({ container, props }) {
+    super({ container, props });
+
+    this.canvas = this.container.querySelector('canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    this.target.appendChild(this.canvas);
-    parent.appendChild(this.target);
-
-    this.props = props;
-
-    this.render();
+    this.draw();
   }
 
-  drawDonutSlice({ x, y, radius, startAngle, angle, color }) {
-    this.ctx.fillStyle = color;
-    this.ctx.beginPath();
-    this.ctx.moveTo(x, y);
-    this.ctx.arc(x, y, radius, startAngle, startAngle + angle, false);
-    this.ctx.closePath();
-    this.ctx.fill();
+  drawDonutSlice({ ctx, x, y, radius, startAngle, angle, color }) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, startAngle, startAngle + angle, false);
+    ctx.closePath();
+    ctx.fill();
   }
 
-  render() {
+  template() {
+    return `
+     <canvas width="100" height="100"></canvas>
+    `;
+  }
+
+  draw() {
     const data = this.props;
-
-    const totalPercentage = data.reduce((acc, { rat }) => acc + Number(rat), 0);
+    const totalPercentage = data?.reduce((acc, { rat }) => acc + Number(rat), 0);
 
     const DRAW_FRAME = 60;
     let frame = 0;
@@ -41,6 +40,7 @@ export default class DonutChart {
       data.reduce((startAngle, { subCategoryId, rat }) => {
         const angle = ((Number(rat) / totalPercentage) * 2 * Math.PI * frame) / DRAW_FRAME;
         this.drawDonutSlice({
+          ctx: this.ctx,
           x: this.canvas.width / 2,
           y: this.canvas.height / 2,
           radius: Math.min(this.canvas.width / 2, this.canvas.height / 2),
@@ -52,6 +52,7 @@ export default class DonutChart {
       }, 1.5 * Math.PI);
 
       this.drawDonutSlice({
+        ctx: this.ctx,
         x: this.canvas.width / 2,
         y: this.canvas.height / 2,
         radius: 0.6 * Math.min(this.canvas.width / 2, this.canvas.height / 2),

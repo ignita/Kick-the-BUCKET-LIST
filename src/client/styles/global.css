@@ -636,6 +636,10 @@ h2.category-title {
   font-size: 1.6rem;
 }
 
+.achievements-content {
+  width: 100%;
+}
+
 .achievements-list {
   display: grid;
   grid-gap: 3rem 3rem;

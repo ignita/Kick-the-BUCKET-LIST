@@ -1,15 +1,6 @@
-export default class AchievementsCard {
-  constructor({ container, initState }) {
-    this.container = container;
-    this.target = document.createElement('div');
-    this.target.classList = 'achievement-wrapper';
-    this.target.tabIndex = 0;
-    this.state = initState;
+import Component from '../../core/Component';
 
-    this.render();
-    this.handleEvents();
-  }
-
+export default class AchievementsCard extends Component {
   renderIcon({ isFailure, completed }) {
     return isFailure
       ? `<i class='bx bxs-error'></i>`
@@ -18,8 +9,8 @@ export default class AchievementsCard {
       : `<i class='bx bx-checkbox'></i>`;
   }
 
-  renderSubAchievements() {
-    return this.state.subAchievements
+  renderSubAchievements(subAchievements) {
+    return subAchievements
       .map(({ title, description, completed, completedDate, completedYear, isFailure }) => {
         const icon = this.renderIcon({ isFailure, completed });
         const completedDateFormat = completedDate ? completedDate : completedYear ? completedYear : '';
@@ -32,8 +23,8 @@ export default class AchievementsCard {
       .join('');
   }
 
-  renderSubAchievementsReview() {
-    return this.state.subAchievements
+  renderSubAchievementsReview(subAchievements) {
+    return subAchievements
       .filter(item => item.review)
       .map(({ title, review, completed, completedDate, completedYear, isFailure }) => {
         const icon = this.renderIcon({ isFailure, completed });
@@ -48,7 +39,7 @@ export default class AchievementsCard {
       .join('');
   }
 
-  render() {
+  renderCard(cardData) {
     const {
       id,
       subCategoryId,
@@ -62,7 +53,7 @@ export default class AchievementsCard {
       images,
       isFailure,
       subAchievements,
-    } = this.state;
+    } = cardData;
 
     const icon = this.renderIcon({ isFailure, completed });
     const completedDateFormat = completedDate ? completedDate : completedYear ? completedYear : '';
@@ -83,7 +74,7 @@ export default class AchievementsCard {
                         ? `<div class="sub-achievements-list">
                             <div class="progress-bar">
                               <span class="box-progress" style="width: ${subAchievementRate}%"></span>
-                            </div>${this.renderSubAchievements()}
+                            </div>${this.renderSubAchievements(subAchievements)}
                           </div>`
                         : ''
                     }
@@ -98,19 +89,28 @@ export default class AchievementsCard {
                        }</dd></dd>
                       ${
                         hasSubReview
-                          ? `<div class="sub-achievements-list">${this.renderSubAchievementsReview()}</div>`
+                          ? `<div class="sub-achievements-list">${this.renderSubAchievementsReview(
+                              subAchievements,
+                            )}</div>`
                           : ''
                       }
                     </dl>
                   </div>`;
 
-    this.target.innerHTML = `
+    return `
     ${front}
     ${review || hasSubReview ? back : ''}
     `;
-
-    this.container.appendChild(this.target);
   }
-
-  handleEvents() {}
+  template() {
+    return this.props
+      .map(card => {
+        return `
+            <div class="achievement-wrapper" tabIndex="0">
+              ${this.renderCard(card)}
+            </div>
+      `;
+      })
+      .join('');
+  }
 }

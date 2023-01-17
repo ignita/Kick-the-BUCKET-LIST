@@ -1,29 +1,39 @@
-export default class LineChart {
-  constructor({ parent, props }) {
-    this.target = document.createElement('canvas');
-    this.target.width = parent.clientWidth;
-    this.target.height = 400;
+import Component from '../../core/Component';
 
-    this.ctx = this.target.getContext('2d');
+export default class LineChart extends Component {
+  constructor({ container, props }) {
+    super({ container, props });
+
+    this.canvas = this.container.querySelector('canvas');
+    this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 1.5;
 
     this.props = props;
     this.lineCnt = 11;
     this.xStart = 30;
     this.yStart = 30;
-    this.gridWidth = this.target.width - this.xStart * 2;
-    this.gridHeight = this.target.height - this.yStart * 2;
+    this.gridWidth = this.canvas.width - this.xStart * 2;
+    this.gridHeight = this.canvas.height - this.yStart * 2;
     this.dx = this.gridWidth / (this.lineCnt - 1);
     this.dy = this.gridHeight / (this.lineCnt - 1);
-    parent.appendChild(this.target);
 
-    this.render();
+    this.draw();
+  }
+
+  template() {
+    const width = this.container.clientWidth;
+
+    return `
+      <canvas width="${width}" height="400"></canvas>
+    `;
   }
 
   drawText({ fontWeight = 400, fontSize = '12px', color, value, x, y }) {
-    this.ctx.font = `${fontWeight} ${fontSize} Pretendard Variable`;
-    this.ctx.fillStyle = '#606f7b';
-    this.ctx.fillText(value, x, y);
+    if (this.ctx) {
+      this.ctx.font = `${fontWeight} ${fontSize} Pretendard Variable`;
+      this.ctx.fillStyle = '#606f7b';
+      this.ctx.fillText(value, x, y);
+    }
   }
 
   drawDot({ color, x, y, radius }) {
@@ -143,12 +153,12 @@ export default class LineChart {
 
     years.forEach((year, idx) => {
       const x = this.xStart - this.ctx.lineWidth * 8 + this.dx * idx;
-      const y = this.target.height;
+      const y = this.canvas.height;
       this.drawText({ x, y, value: year });
     });
   }
 
-  render() {
+  draw() {
     this.drawGrid();
     this.drawGraph();
     this.drawColumnLabel();

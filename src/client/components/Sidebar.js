@@ -1,70 +1,67 @@
 import { CATEGORY_ICON } from '../constants';
+import Component from '../core/Component';
 import { showToastMessage } from '../utils';
 
-export default class Siebar {
-  constructor({ container, initState }) {
-    this.container = container;
-    this.target = document.createElement('aside');
-    this.target.classList = 'side-bar';
-    this.container.appendChild(this.target);
-
-    this.state = initState;
-    this.target.classList.toggle('collapse', this.state.sidebarCollapse);
-    this.render();
-    this.handleEvents();
+export default class Siebar extends Component {
+  constructor({ container, props }) {
+    super({ container, props });
+    this.container.classList.toggle('collapse', this.props.sidebarCollapse);
   }
 
-  render() {
+  template() {
+    const { categories, sidebarCollapse } = this.props;
+
     const sidebarHeader = `
     <div class="side-bar-header">
       <a href="#" class="side-bar-close-btn" aria-label="Close Sidebar">
         <i class="bx bx-x bx-spin-hover"></i>
       </a>
       <a href="#" class="side-bar-header-btn" role="presentation" aria-label="Expand/Collapse Sidebar">
-        <i class="bx bx-arrow-from-${this.state.sidebarCollapse ? 'left' : 'right'} side-bar-header-btn-icon"></i>
+        <i class="bx bx-arrow-from-${sidebarCollapse ? 'left' : 'right'} side-bar-header-btn-icon"></i>
       </a>
     </div>`;
 
-    const { categories } = this.state;
-    this.target.innerHTML =
+    const sidebar =
       sidebarHeader +
       `<ul class="main-category">
-    ${categories
-      .map(({ title, name, subCategories }) => {
-        return `<li>
-          <a class="main-category-header" href="#${name}">${title}</a>
-          <ul class="sub-category">
-          ${subCategories
-            .map(({ name, title }) => {
-              return `<li class="sub-category-item">
-              <a href="#${name}">
-                <i class="${CATEGORY_ICON[name]}  sub-category-item-icon bx-fw"></i>
-                <span class="sub-category-item-text">${title}</span>
-              </a>
-            </li>`;
-            })
-            .join('')}
-          </ul>
-        </li>`;
-      })
-      .join('')}
-    </ul>`;
+  ${categories
+    .map(({ title, name, subCategories }) => {
+      return `<li>
+        <a class="main-category-header" href="#${name}">${title}</a>
+        <ul class="sub-category">
+        ${subCategories
+          .map(({ name, title }) => {
+            return `<li class="sub-category-item">
+            <a href="#${name}">
+              <i class="${CATEGORY_ICON[name]}  sub-category-item-icon bx-fw"></i>
+              <span class="sub-category-item-text">${title}</span>
+            </a>
+          </li>`;
+          })
+          .join('')}
+        </ul>
+      </li>`;
+    })
+    .join('')}
+  </ul>`;
+
+    return sidebar;
   }
 
   handleEvents() {
-    const sideBarCloseBtn = this.target.querySelector('.side-bar-close-btn');
+    const sideBarCloseBtn = this.container.querySelector('.side-bar-close-btn');
     sideBarCloseBtn.addEventListener('click', e => {
       e.preventDefault();
-      this.target.classList.remove('open');
+      this.container.classList.remove('open');
     });
 
-    const sideBarHeaderBtn = this.target.querySelector('.side-bar-header-btn');
-    const sideBarHeaderBtnIcon = this.target.querySelector('.side-bar-header-btn-icon');
+    const sideBarHeaderBtn = this.container.querySelector('.side-bar-header-btn');
+    const sideBarHeaderBtnIcon = this.container.querySelector('.side-bar-header-btn-icon');
     sideBarHeaderBtn.addEventListener('click', e => {
       e.preventDefault();
 
-      this.target.classList.toggle('collapse');
-      sideBarHeaderBtnIcon.classList = this.target.classList.contains('collapse')
+      this.container.classList.toggle('collapse');
+      sideBarHeaderBtnIcon.classList = this.container.classList.contains('collapse')
         ? 'bx bx-arrow-from-left side-bar-header-btn-icon'
         : 'bx bx-arrow-from-right side-bar-header-btn-icon';
     });
@@ -72,11 +69,11 @@ export default class Siebar {
     const mediaSize992 = window.matchMedia('(min-width: 992px)');
     mediaSize992.addEventListener('change', e => {
       if (e.matches) {
-        this.target.classList.remove('open');
+        this.container.classList.remove('open');
       }
     });
 
-    this.target.addEventListener('click', e => {
+    this.container.addEventListener('click', e => {
       if (!e.target.closest('.sub-category-item')) {
         return;
       }

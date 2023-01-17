@@ -1,16 +1,7 @@
-export default class AchievementsDashboard {
-  constructor({ container, initState }) {
-    this.container = container;
-    this.target = document.createElement('div');
-    this.target.classList = 'achievements-dashboard';
-    this.container.appendChild(this.target);
+import Component from '../../core/Component';
 
-    this.state = initState;
-
-    this.render();
-  }
-
-  render() {
+export default class AchievementsDashboard extends Component {
+  template() {
     const {
       thisYear = 0,
       thisYearTrending = 0,
@@ -27,9 +18,9 @@ export default class AchievementsDashboard {
       incompleted = 0,
       total = 0,
       completed = 0,
-    } = this.state;
+    } = this.props;
 
-    this.target.innerHTML = `
+    return `
     <div class="achievements-dashboard-header">
       <span class="dashboard-title">통계</span>
     </div>

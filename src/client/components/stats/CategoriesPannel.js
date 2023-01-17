@@ -1,38 +1,36 @@
+import Component from '../../core/Component';
 import DonutChart from './DonutChart';
 import DonutChartDetail from './DonutChartDetail';
 
-export default class CategoriesPannel {
-  constructor({ parent, props }) {
-    this.target = document.createElement('div');
-    this.target.className = 'stats-categories-pannel';
-    this.props = props;
+const FILTER_TYPE = {
+  total: '전체 항목',
+  completed: '달성 항목',
+  incompleted: '미달성 항목',
+};
 
-    parent.appendChild(this.target);
-
-    this.render();
+export default class CategoriesPannel extends Component {
+  template() {
+    return Object.keys(this.props)
+      .map(key => {
+        return `<div class="stats-categories-chart-wrapper" data-chart-key="${key}">
+                  <h2 class="donut-chart-title">${FILTER_TYPE[key]}</h2>
+                  <div class="donut-chart-wrapper"></div>
+                  <ul class="donut-chart-detail"></ul>
+                </div>`;
+      })
+      .join('');
   }
 
-  render() {
-    const { total, completed, incompleted } = this.props;
-    const totalChart = document.createElement('div');
-    totalChart.className = 'stats-categories-chart-wrapper';
-    totalChart.innerHTML = '<h2 class="donut-chart-title">전체항목</h2>';
-    new DonutChart({ parent: totalChart, props: total });
-    new DonutChartDetail({ parent: totalChart, props: total });
-    this.target.appendChild(totalChart);
-
-    const completedChart = document.createElement('div');
-    completedChart.className = 'stats-categories-chart-wrapper';
-    completedChart.innerHTML = '<h2 class="donut-chart-title">달성 항목</h2>';
-    new DonutChart({ parent: completedChart, props: completed });
-    new DonutChartDetail({ parent: completedChart, props: completed });
-    this.target.appendChild(completedChart);
-
-    const incompletedChart = document.createElement('div');
-    incompletedChart.className = 'stats-categories-chart-wrapper';
-    incompletedChart.innerHTML = '<h2 class="donut-chart-title">미달성 항목</h2>';
-    new DonutChart({ parent: incompletedChart, props: incompleted });
-    new DonutChartDetail({ parent: incompletedChart, props: incompleted });
-    this.target.appendChild(incompletedChart);
+  mounted() {
+    for (const [key, value] of Object.entries(this.props)) {
+      const chart = document.querySelector(
+        `.stats-categories-chart-wrapper[data-chart-key="${key}"] .donut-chart-wrapper`,
+      );
+      new DonutChart({ container: chart, props: value });
+      const chartDetail = document.querySelector(
+        `.stats-categories-chart-wrapper[data-chart-key="${key}"] .donut-chart-detail`,
+      );
+      new DonutChartDetail({ container: chartDetail, props: value });
+    }
   }
 }

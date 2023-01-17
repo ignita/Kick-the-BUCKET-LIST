@@ -1,12 +1,23 @@
 import Api from '../utils/http';
 import CategoriesPannel from '../components/stats/CategoriesPannel';
 import YearsPannel from '../components/stats/YearsPannel';
-export default class StatsView {
-  constructor({ container, initState }) {
-    this.container = container;
-    this.state = initState;
+import View from '../core/View';
+export default class StatsView extends View {
+  constructor({ container }) {
+    super({ container, initState: { categories: [], yearsTrending: [] } });
 
     this.getData();
+  }
+
+  template() {
+    return `
+      <main class="stats-wrapper">
+        <h1>카테고리별 비율</h1>
+        <div class="stats-categories-pannel"></div>
+        <h1>달성 항목 추이</h1>
+        <div class="stats-years-pannel"></div>
+      </main>
+    `;
   }
 
   async getData() {
@@ -15,29 +26,11 @@ export default class StatsView {
     this.setState({ categories, yearsTrending });
   }
 
-  render() {
-    this.container.innerHTML = '';
-    const main = document.createElement('main');
-    main.classList.add('stats-wrapper');
-    this.container.append(main);
+  mounted() {
+    const statsCategoriesPannel = document.querySelector('.stats-categories-pannel');
+    new CategoriesPannel({ container: statsCategoriesPannel, props: this.state.categories });
 
-    const categoriesTitle = document.createElement('h1');
-    categoriesTitle.innerText = '카테고리별 비율';
-    main.append(categoriesTitle);
-    new CategoriesPannel({ parent: main, props: this.state.categories });
-
-    const yearsTitle = document.createElement('h1');
-    yearsTitle.innerText = '달성 항목 추이';
-    main.append(yearsTitle);
-    new YearsPannel({ parent: main, props: this.state.yearsTrending });
-  }
-
-  setState(state) {
-    this.state = {
-      ...this.state,
-      ...state,
-    };
-
-    this.render();
+    const statsYearsPannel = document.querySelector('.stats-years-pannel');
+    new YearsPannel({ container: statsYearsPannel, props: this.state.yearsTrending });
   }
 }
