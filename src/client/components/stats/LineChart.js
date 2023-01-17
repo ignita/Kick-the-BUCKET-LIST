@@ -29,11 +29,9 @@ export default class LineChart extends Component {
   }
 
   drawText({ fontWeight = 400, fontSize = '12px', color, value, x, y }) {
-    if (this.ctx) {
-      this.ctx.font = `${fontWeight} ${fontSize} Pretendard Variable`;
-      this.ctx.fillStyle = '#606f7b';
-      this.ctx.fillText(value, x, y);
-    }
+    this.ctx.font = `${fontWeight} ${fontSize} Pretendard Variable`;
+    this.ctx.fillStyle = '#606f7b';
+    this.ctx.fillText(value, x, y);
   }
 
   drawDot({ color, x, y, radius }) {
