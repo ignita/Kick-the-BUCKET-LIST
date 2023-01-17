@@ -1,19 +1,10 @@
-export default class Loader {
-  constructor({ container, initState }) {
-    this.container = container;
-    this.target = document.createElement('div');
-    this.target.classList = 'loader';
-    this.target.innerHTML = `<div class="spinner"></div>`;
-    this.container.appendChild(this.target);
+import Component from '../core/Component';
 
-    this.state = initState;
-
-    this.render();
+export default class Loader extends Component {
+  template() {
+    return `<div class="spinner"></div>`;
   }
-
-  render() {
-    this.target.classList.toggle('show', this.state);
-
-    this.target.classList;
+  mounted() {
+    this.container.classList.toggle('show', this.props);
   }
 }

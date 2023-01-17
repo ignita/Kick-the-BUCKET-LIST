@@ -1,21 +1,16 @@
-import { FILTER_ITEMS, FILTER_TYPE } from '../constants';
-export default class Siebar {
-  constructor({ container, initState, setState }) {
-    this.container = container;
-    this.target = document.createElement('section');
-    this.target.classList = 'sub-header';
-    this.container.appendChild(this.target);
+import { FILTER_ITEMS } from '../constants';
+import Component from '../core/Component';
+export default class Siebar extends Component {
+  constructor({ container, props, setState }) {
+    super({ container, props });
 
-    this.state = initState;
     this.setState = setState;
-
-    this.render();
-    this.handleEvents();
   }
 
-  render() {
-    const filterType = this.state;
-    this.target.innerHTML = `
+  template() {
+    const filterType = this.props;
+
+    return `
     <ul class="filter-list" role="filtering">
       <li class="filter-list-item menu">
         <a href="#" class="filter-list-item-side-toggle-btn">
@@ -36,13 +31,13 @@ export default class Siebar {
 
   handleEvents() {
     const sideBar = document.querySelector('.side-bar');
-    const sideBarOpenBtn = this.target.querySelector('.filter-list-item-side-toggle-btn');
+    const sideBarOpenBtn = this.container.querySelector('.filter-list-item-side-toggle-btn');
     sideBarOpenBtn.addEventListener('click', e => {
       e.preventDefault();
       sideBar.classList.add('open');
     });
 
-    this.target.addEventListener('click', e => {
+    this.container.addEventListener('click', e => {
       const item = e.target.closest('.filter-list-item:not(.menu)');
       if (!item) {
         return;
@@ -52,7 +47,7 @@ export default class Siebar {
       const sidebarActiveItems = document.querySelectorAll(`.sub-category-item > a.active`);
       sidebarActiveItems.forEach(item => item.classList.remove('active'));
 
-      const active = this.target.querySelector('.active');
+      const active = this.container.querySelector('.active');
       active.classList.remove('active');
       item.classList.add('active');
 

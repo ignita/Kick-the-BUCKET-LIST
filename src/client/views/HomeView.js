@@ -1,23 +1,35 @@
+import View from '../core/View';
 import Api from '../utils/http';
 import Sidebar from '../components/Sidebar';
 import SubHeader from '../components/SubHeader';
 import Backdrop from '../components/Backdrop';
 import Achievements from '../components/achievements';
 import Loader from '../components/Loader';
-export default class HomeView {
+export default class HomeView extends View {
   constructor({ container }) {
-    this.container = container;
-    this.state = {
-      categories: [],
-      achievements: [],
-      trending: {},
-      filterType: 0,
-      loading: true,
-      sidebarCollapse: false,
-    };
+    super({
+      container,
+      initState: {
+        categories: [],
+        achievements: [],
+        trending: {},
+        filterType: 0,
+        loading: true,
+        sidebarCollapse: false,
+      },
+    });
 
-    this.render();
     this.getData();
+  }
+
+  template() {
+    return `
+      <div class="loader"></div>
+      <aside class="side-bar"></aside>
+      <div class="side-bar-backdrop"></div>
+      <section class="sub-header"></section>
+      <main class="achievements-wrapper"></main>
+    `;
   }
 
   async getData() {
@@ -33,23 +45,29 @@ export default class HomeView {
     });
   }
 
-  setState(newState) {
-    this.state = {
-      ...this.state,
-      ...newState,
-    };
-    this.render();
-  }
+  mounted() {
+    const { loading, categories, sidebarCollapse, filterType } = this.state;
 
-  render() {
-    this.container.innerHTML = '';
-    new Loader({ container: this.container, initState: this.state.loading });
+    const loader = document.querySelector('.loader');
+    new Loader({ container: loader, props: loading });
+
+    const sidebar = document.querySelector('.side-bar');
     new Sidebar({
-      container: this.container,
-      initState: { categories: this.state.categories, sidebarCollapse: this.state.sidebarCollapse },
+      container: sidebar,
+      props: { categories, sidebarCollapse },
     });
-    new Backdrop({ container: this.container });
-    new SubHeader({ container: this.container, initState: this.state.filterType, setState: this.setState.bind(this) });
-    new Achievements({ container: this.container, initState: this.state });
+
+    const backdrop = document.querySelector('.side-bar-backdrop');
+    new Backdrop({ container: backdrop });
+
+    const subHeader = document.querySelector('.sub-header');
+    new SubHeader({
+      container: subHeader,
+      props: filterType,
+      setState: this.setState.bind(this),
+    });
+
+    const achievementsWrapper = document.querySelector('.achievements-wrapper');
+    new Achievements({ container: achievementsWrapper, props: this.state });
   }
 }

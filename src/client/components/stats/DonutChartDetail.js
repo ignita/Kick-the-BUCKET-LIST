@@ -1,18 +1,8 @@
 import { CATEGORY_COLORS } from '../../constants/colors';
-export default class DonutChartDetail {
-  constructor({ parent, props }) {
-    this.target = document.createElement('ul');
-    this.target.className = 'donut-chart-detail';
-
-    parent.appendChild(this.target);
-
-    this.props = props;
-
-    this.render();
-  }
-
-  render() {
-    this.target.innerHTML = `
+import Component from '../../core/Component';
+export default class DonutChartDetail extends Component {
+  template() {
+    return `
     ${this.props
       .map(
         ({ title, cnt, subCategoryId }) =>
