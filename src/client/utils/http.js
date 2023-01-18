@@ -8,7 +8,7 @@ class ResponseError extends Error {
 const fetchRequest = async params => {
   const { method = 'GET', url, headers = { 'Content-Type': 'application/json' }, body } = params;
 
-  let config = {
+  const config = {
     method,
     headers,
   };
