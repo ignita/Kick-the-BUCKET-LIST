@@ -14,7 +14,7 @@ const fetchRequest = async params => {
   };
 
   if (body) {
-    config.body = body;
+    config.body = JSON.stringify(body);
   }
 
   const res = await fetch(url, config);
